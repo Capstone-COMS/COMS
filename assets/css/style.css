@@ -290,6 +290,9 @@ input:focus {
 }
 /* </style> */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6f40e3e (login ui)
 .login-section {
   display: flex;
   align-items: center;
@@ -302,6 +305,7 @@ input:focus {
 .left-panel {
   background-color: #9b593c;
 }
+<<<<<<< HEAD
 
 .concourse-configuration {
   display: flex;
@@ -375,3 +379,5 @@ input[type="submit"]:hover {
 }
 =======
 >>>>>>> 711c29a (fix timeline)
+=======
+>>>>>>> 6f40e3e (login ui)
