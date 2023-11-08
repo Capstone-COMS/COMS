@@ -2,6 +2,7 @@
 <!-- ***START SESSION**** -->
 <!-- ******************** -->
 <?php
+<<<<<<< HEAD
    // space area(sqft) width& height
    // space rent bill
    // space windows
@@ -9,13 +10,27 @@
    // lights
 
    session_name("user_session");
+=======
+// space area(sqft) width& height
+// space rent bill
+// space windows
+// space Electrical outlets/ wall plug
+// lights
+
+session_name("user_session");
+>>>>>>> 32bc684 (added MAP PAGE)
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require('includes/dbconnection.php');
+<<<<<<< HEAD
 ob_start();
 
 ?>
+=======
+?>
+
+>>>>>>> 32bc684 (added MAP PAGE)
 <!-- ******************** -->
 <!-- ***** PHP CODE ***** -->
 <!-- ******************** -->
@@ -32,13 +47,22 @@ if (isset($_GET['concourse_id'])) {
     echo 'Concourse ID not provided.';
 }
 ?>
+<<<<<<< HEAD
 <!-- ******************** -->
 <!-- **** START HTML **** -->
 <!-- ******************** -->
+=======
+
+
+    <!-- ******************** -->
+    <!-- **** START HTML **** -->
+    <!-- ******************** -->
+>>>>>>> 32bc684 (added MAP PAGE)
 <?php
 include('includes/header.php');
 include('includes/nav.php');
 ?>
+<<<<<<< HEAD
 <style>
    #fp-canvas-container{
    height:100vh;
@@ -177,3 +201,21 @@ include('includes/nav.php');
    </div>
 </section>
 <?php include('includes/footer.php');?>
+=======
+<?php
+if ($concourseResult && mysqli_num_rows($concourseResult) > 0) {
+    $concourseData = mysqli_fetch_assoc($concourseResult);
+
+    echo '<h3>Concourse Map</h3>';
+    echo '<div style ="">';
+    echo '<img src="/COMS/uploads/' . $concourseData['concourse_map'] . '" alt="Concourse Map">';
+    echo '</div>';
+// You can add more details or customize the map display as needed
+} else {
+    echo 'Concourse not found.';
+}
+?>
+
+<!-- Your HTML and display code goes here -->
+<?php include('includes/footer.php'); ?>
+>>>>>>> 32bc684 (added MAP PAGE)
