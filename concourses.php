@@ -113,7 +113,7 @@ $checkApprovedMapsQuery = "SELECT * FROM concourse_verification WHERE owner_id =
               while ($mapData = mysqli_fetch_assoc($checkApprovedMapsResult)) {
                   echo '<div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4">';
                   echo '<div class="card">';
-                  echo '<a href="concourse_configuration.php?concourse_id=' . $mapData['concourse_id'] . '">';
+                  echo '<a href="concourse.php?concourse_id=' . $mapData['concourse_id'] . '">';
                   echo '<div class="image-container">';
                   if (!empty($mapData['concourse_image'])) {
                       // Display the concourse_image if it exists
