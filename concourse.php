@@ -2,6 +2,9 @@
 <!-- ***START SESSION**** -->
 <!-- ******************** -->
 <?php
+// TO BE ADDED/ WIP DESIGN AND UPLOADING LOGIC
+// upload contract --->import the lease agreement template(THIS WILL BE SEEN BY THE TENANT)
+//
 session_name("user_session");
 session_start();
 ini_set('display_errors', 1);
@@ -96,6 +99,7 @@ include('includes/nav.php');
         echo '<p class="card-text">Owner ID: ' . $concourseData['owner_id'] . '</p>';
         // echo '<p class="card-text">Concourse Name: ' . $concourseData['owner_name'] . '</p>';
         echo '<p class="card-text">Owner Name: ' . $concourseData['owner_name'] . '</p>';
+        echo '<p class="card-text">Spaces: ' . $concourseData['spaces'] . '</p>';
         // Add the user image here
         // echo '<img src="' . $_SESSION['uimage'] . '" class="card-img-top" style="height:50px; width:50px;" alt="User Image">';
         // Add more details as needed

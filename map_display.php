@@ -7,8 +7,54 @@
    // space windows
    // space Electrical outlets/ wall plug
    // lights
+//
 
-   session_name("user_session");
+// TO BE ADDED
+// SIDEBAR FORM WHERE THE owner inputs the above
+// Space ID(shown/auto-generated)
+// Space name
+// width, length, height? for area and dimension
+//
+//
+//
+//DATABASE
+// table name - spaces
+// table columns
+// concourse_id from (concourse_verification)
+// space_id ------>>> space_id/number should reset to 1 based on concourse_id
+// space_name
+// space_width --will be computed into area
+// space_length --will be computed into area
+// space_height --will be computed into dimension
+//
+// space status(available-green, reserved-yellow/blue, occupied-red) -available in default
+// space tenant?
+
+
+////////////////////////////////////////////////////////////
+//// SAMPLE CALCULATION////////////////////////////////////
+////////////////////////////////////////////////////////
+// // Your input values
+// $width = $_POST['width']; // Assuming you are using a form to get input
+// $length = $_POST['length']; // Assuming you are using a form to get input
+
+// // Calculate the area
+// $area = $width * $length;
+
+// // Insert or update the data with the calculated area
+// $sql = "INSERT INTO your_table (width, length, area) VALUES ('$width', '$length', '$area')";
+// // or for update: $sql = "UPDATE your_table SET width='$width', length='$length', area='$area' WHERE your_condition";
+
+// if ($conn->query($sql) === TRUE) {
+//     echo "Record added successfully";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $conn->error;
+// }
+
+
+
+
+session_name("user_session");
 session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
