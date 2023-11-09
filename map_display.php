@@ -135,7 +135,7 @@ include('includes/nav.php');
             <div class="row">
                <div class="col-2 text-right">
                   <button class="btn btn-primary rounded-0" id="draw"> Draw to Map Space</button>
-                  <button class="btn btn-primary rounded-0 d-none" id="create_table"> Create Table</button>
+                  <button class="btn btn-primary rounded-0 d-none" id="create_table"> Create Space</button>
                   <button class="btn btn-dark rounded-0 d-none" id="cancel"> Cancel</button>
                </div>
                <div class="col-2 text-right">
@@ -158,7 +158,7 @@ include('includes/nav.php');
                <div class="col-md-3 space-sidebar-form">
                   <h3><?php echo isset($concourseData['concourse_name']) ? $concourseData['concourse_name'] : "Concourse"; ?></h3>
               
-                  <form id="space-form" class="">
+                  <form id="space-form" class="d-none">
     <h3>Space Details</h3>
     <label for="space_name">Space Name:</label>
     <input type="text" id="space_name" name="space_name" required>
@@ -305,6 +305,14 @@ include('includes/nav.php');
    });
 
    $('#create_table').click(function () {
+
+    $('#create_table').click(function () {
+    $('#space-form').removeClass('d-none');
+    $('#draw').hide('slow');
+    $(this).addClass('d-none');
+    $('#cancel').removeClass('d-none');
+    $('#fp-canvas').addClass('d-none');
+});
     //    uni_modal("Map Table", "manage_table.php?x=" + px1_perc + "&y=" + py1_perc + "&w=" + px2_perc + "&h=" + py2_perc)
 console.log("clicked create table") 
 });
