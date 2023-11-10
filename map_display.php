@@ -5,6 +5,18 @@
 // space Electrical outlets/ wall plug
 // lights
 //
+// CURRENT ERRORS
+
+// 2x clicking of created space
+// coordinates of the cursor and canvas drawing
+
+
+
+
+
+
+
+
 
 // TO BE ADDED
 // SIDEBAR FORM WHERE THE owner inputs the above
