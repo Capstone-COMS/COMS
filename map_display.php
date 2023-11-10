@@ -67,6 +67,7 @@ if (isset($_GET['concourse_id'])) {
 } else {
     echo 'Concourse ID not provided.';
 }
+
 ?>
 
 <?php
@@ -187,6 +188,24 @@ include('includes/nav.php');
       </div>
    </div>
 </section>
+<?php
+                        $sql = "SELECT * FROM `space` order by space_id asc";
+$qry = $con->query($sql);
+$tbl = array();
+while($row = $qry->fetch_assoc()):
+    $tbl[$row['space_id']] = array(
+        "id" => $row['space_id'],
+        "tbl_no" => $row['space_id'],
+        "name" => $row['space_name']
+    );
+    ?>
+<tr>
+    <td class="text-center p-0"><?php echo $row['tbl_no'] ?></td>
+    <td class="py-0 px-1"><?php echo $row['name'] ?></td>
+    <!-- ... -->
+</tr>
+<?php endwhile; ?>
+
 
 <script>
    // Include the canvas drawing logic here
