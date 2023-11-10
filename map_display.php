@@ -87,7 +87,7 @@ include('includes/header.php');
 include('includes/nav.php');
 ?>
 
-<style>
+<!-- <style>
    #fp-canvas-container {
        /* height: 100vh;
        background: #9b593c;
@@ -136,8 +136,44 @@ include('includes/nav.php');
        background: #0000004d;
        color: #fff !important;
    }
-</style>
+</style> -->
 
+
+<style>
+    #fp-canvas-container{
+        height:50vh;
+        width:calc(100%);
+        position:relative;
+    }
+    .fp-img,.fp-canvas,.fp-canvas-2{
+        position:absolute;
+        width:calc(100%);
+        height:calc(100%);
+        top:0;
+        left:0;
+        z-index: 1;
+    }
+    #fp-map{
+        position:absolute;
+        width:calc(100%);
+        height:calc(100%);
+        top:0;
+        left:0;
+        z-index: 1;
+    }
+    .fp-canvas {
+        z-index: 2;
+        background: #0000000d;
+        cursor: crosshair;
+    }
+    #fp-map{
+        z-index: 1;
+    }
+    area:hover {
+        background: #0000004d;
+        color: #fff !important;
+    }
+</style>
 <section style="margin-top:80px;">
    <div class="card">
       <div class="card-header d-flex justify-content-between">
