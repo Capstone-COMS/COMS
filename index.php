@@ -144,11 +144,27 @@ include('includes/nav.php');
          font-size: 65px;
       }
 
+   
       .login-section {
-         padding: 50px;
+      padding: 50px;
+      opacity: 0;
+      animation: fadeIn 3s forwards;
       }
 
+<<<<<<< HEAD
 >>>>>>> 88f2fb7 (index design)
+=======
+         /* Keyframes for fadeIn animation */
+         @keyframes fadeIn {
+            from {
+               opacity: 0;
+            }
+            to {
+               opacity: 1;
+            }
+         }
+
+>>>>>>> 0acd34a (index change design)
       .login-section h1 {
          font-family: 'Times New Roman';
          font-size: 50px;
@@ -156,6 +172,9 @@ include('includes/nav.php');
          letter-spacing: 2px;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0acd34a (index change design)
       .card {
       background-color: rgba(255, 255, 255, 0.8); /* Use rgba for opacity */
       transition: background-color 0.3s ease; /* Smooth transition for background color */
@@ -165,8 +184,11 @@ include('includes/nav.php');
       .card:hover {
          background-color: rgba(255, 255, 255, 1); /* Change opacity on hover */
       }
+<<<<<<< HEAD
    </style>
 =======
+=======
+>>>>>>> 0acd34a (index change design)
    </style>
 </head>
 <body>
@@ -189,10 +211,14 @@ include('includes/nav.php');
                      <img src="assets/images/Logo-9b593c.png" alt="Login Form" class="img-fluid">
                   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <div class="col-md-6 col-lg-7 d-flex align-items-center" >
 =======
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
 >>>>>>> 88f2fb7 (index design)
+=======
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center" >
+>>>>>>> 0acd34a (index change design)
                      <div class="card-body p-4 p-lg-5 text-black">
                         <form>
                            <div class="d-flex align-items-center mb-3 pb-1">
