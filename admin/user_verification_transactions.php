@@ -52,6 +52,15 @@ $result = mysqli_query($con, $sql);
 include('includes/header.php');
 include('includes/nav.php');
 ?>
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMS</title>
+>>>>>>> 3069851 (new design)
     <style>
         /* Style for the User Details Modal */
         #userDetailsModal {
@@ -75,6 +84,7 @@ include('includes/nav.php');
             width: 80%;
             max-width: 600px;
         }
+<<<<<<< HEAD
 
         /* Style for the Close button */
         .close {
@@ -145,11 +155,42 @@ include('includes/nav.php');
             background-color: #c19f90 !important;
         }
     </style>
+=======
+
+        /* Style for the Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* Vertically align the table content */
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        th, td {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+>>>>>>> 3069851 (new design)
 <div class="container-fluid">
     <div class="row">
         <?php include('includes/sidebar.php');?>
 
         <section class="col-sm-10 py-5 dashboard">
+<<<<<<< HEAD
             <h4 style="color: white; opacity: 80%;">User Verifications</h4>
             <table class="table table-hover table-bordered" id="datatable">
                 <thead style="background-color: #c19f90;">
@@ -158,6 +199,14 @@ include('includes/nav.php');
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Status</th>
+=======
+            <h4>User Verifications</h4>
+            <table class="table table-bordered" id="datatable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+>>>>>>> 3069851 (new design)
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -165,12 +214,19 @@ include('includes/nav.php');
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>';
+<<<<<<< HEAD
                         echo '<td>' . $row['verification_id'] . '</td>';
                         echo '<td>' . $row['first_name'] . '</td>';
                         echo '<td>' . $row['last_name'] . '</td>';
                         echo '<td>' . $row['status'] . '</td>';
                         echo '<td>';
                         echo '<button type="button" class="button" onclick="openUserDetailsModal(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ')">View User</button>';
+=======
+                        echo '<td>' . $row['first_name'] . '</td>';
+                        echo '<td>' . $row['last_name'] . '</td>';
+                        echo '<td>';
+                        echo '<a href="#" onclick="openUserDetailsModal(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ')">View User</a>';
+>>>>>>> 3069851 (new design)
                         echo '</td>';
                         echo '</tr>';
                     }
@@ -182,7 +238,44 @@ include('includes/nav.php');
                 <div class="modal-content">
                     <span class="close" id="userDetailsClose">&times;</span>
                     <form id="userDetailsForm">
+<<<<<<< HEAD
                         <!-- Form structure goes here -->
+=======
+                        <label for="submissionId">Submission ID:</label>
+                        <input type="text" id="submissionId" name="submissionId" readonly>
+
+                        <label for="userId">User ID:</label>
+                        <input type="text" id="userId" name="userId" readonly>
+
+                        <label for="status">Status:</label>
+                        <input type="text" id="status" name="status" readonly>
+
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" readonly>
+
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" readonly>
+
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" readonly>
+
+                        <label for="gender">Gender:</label>
+                        <input type="text" id="gender" name="gender" readonly>
+
+                        <label for="birthday">Birthday:</label>
+                        <input type="text" id="birthday" name="birthday" readonly>
+
+                        <label for="verificationImage">Verification Image:</label>
+                        <a href="#" id="verificationImageLink" target="_blank">View Image</a>
+
+                        <label for="documentLink">Document:</label>
+                        <a href="#" id="documentLink" target="_blank">View Document</a>
+
+                        <div class="actions">
+                            <a href="#" id="approveLink">Approve</a>
+                            <a href="#" id="rejectLink">Reject</a>
+                        </div>
+>>>>>>> 3069851 (new design)
                     </form>
                 </div>
             </div>
@@ -223,6 +316,7 @@ include('includes/nav.php');
     function openUserDetailsModal(user) {
         // Dynamically generate HTML for user details
         var userDetailsHTML = '';
+<<<<<<< HEAD
 
         userDetailsHTML += '<div class="form-row">';
         userDetailsHTML += '<div class="form-group col-md-6">';
@@ -285,6 +379,41 @@ include('includes/nav.php');
         userDetailsHTML += '<div class="form-row actions">';
         userDetailsHTML += '<a href="user_verification_approve.php?id=' + user['verification_id'] + '" class="button" style="background-color: green; text-decoration: none;">Approve</a>';
         userDetailsHTML += '<a href="user_verification_reject.php?id=' + user['verification_id'] + '" class="button" style="background-color: red; text-decoration: none;">Reject</a>';
+=======
+        userDetailsHTML += '<label for="submissionId">Submission ID:</label>';
+        userDetailsHTML += '<input type="text" id="submissionId" name="submissionId" value="' + user['verification_id'] + '" readonly>';
+
+        userDetailsHTML += '<label for="userId">User ID:</label>';
+        userDetailsHTML += '<input type="text" id="userId" name="userId" value="' + user['user_id'] + '" readonly>';
+
+        userDetailsHTML += '<label for="status">Status:</label>';
+        userDetailsHTML += '<input type="text" id="status" name="status" value="' + user['status'] + '" readonly>';
+
+        userDetailsHTML += '<label for="firstName">First Name:</label>';
+        userDetailsHTML += '<input type="text" id="firstName" name="firstName" value="' + user['first_name'] + '" readonly>';
+
+        userDetailsHTML += '<label for="lastName">Last Name:</label>';
+        userDetailsHTML += '<input type="text" id="lastName" name="lastName" value="' + user['last_name'] + '" readonly>';
+
+        userDetailsHTML += '<label for="address">Address:</label>';
+        userDetailsHTML += '<input type="text" id="address" name="address" value="' + user['address'] + '" readonly>';
+
+        userDetailsHTML += '<label for="gender">Gender:</label>';
+        userDetailsHTML += '<input type="text" id="gender" name="gender" value="' + user['gender'] + '" readonly>';
+
+        userDetailsHTML += '<label for="birthday">Birthday:</label>';
+        userDetailsHTML += '<input type="text" id="birthday" name="birthday" value="' + user['birthday'] + '" readonly>';
+
+        userDetailsHTML += '<label for="verificationImage">Verification Image:</label>';
+        userDetailsHTML += '<a href="../uploads/' + user['image_filename'] + '" target="_blank">View Image</a>';
+
+        userDetailsHTML += '<label for="documentLink">Document:</label>';
+        userDetailsHTML += '<a href="../uploads/' + user['document_filename'] + '" target="_blank">View Document: ' + user['document_filename'] + '</a>';
+
+        userDetailsHTML += '<div class="actions">';
+        userDetailsHTML += '<a href="user_verification_approve.php?id=' + user['verification_id'] + '">Approve</a>';
+        userDetailsHTML += '<a href="user_verification_reject.php?id=' + user['verification_id'] + '">Reject</a>';
+>>>>>>> 3069851 (new design)
         userDetailsHTML += '</div>';
 
         // Display user details in the modal form
@@ -292,8 +421,28 @@ include('includes/nav.php');
         $('#userDetailsModal').css('display', 'block');
     }
 
+<<<<<<< HEAD
     // Close User Details Modal
     $('#userDetailsClose').on('click', function() {
         $('#userDetailsModal').css('display', 'none');
     });
 </script>
+=======
+        // Close User Details Modal
+        $('#userDetailsClose').on('click', function() {
+        $('#userDetailsModal').css('display', 'none');
+    });
+
+    // Function to open image modal (Assuming you have this function defined)
+    function openImageModal(imagePath) {
+        // Your implementation for opening the image modal
+    }
+
+    // Function to open document modal (Assuming you have this function defined)
+    function openDocumentModal(documentPath) {
+        // Your implementation for opening the document modal
+    }
+</script>
+</body>
+</html>
+>>>>>>> 3069851 (new design)
