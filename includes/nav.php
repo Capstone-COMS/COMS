@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 <style>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMS</title>
+    <style>
+>>>>>>> 632714e (navbar changes)
     .transparent-nav {
         background-color: transparent !important; /* Set the background color to transparent */
         box-shadow: none !important; /* Remove any box shadow */
@@ -18,6 +28,7 @@
         color: #eeeeee !important;
         transition: background-color 0.3s ease;
     }
+<<<<<<< HEAD
     .navbar-brand span {
         color: #9b593c;
         font-size: 30px;
@@ -49,6 +60,17 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+=======
+</style>
+</head>
+<body>
+<!-- Start Navigation -->
+<nav class="navbar navbar-expand-sm navbar-light pl-5 fixed-top <?php echo isset($_SESSION['uid']) ? '' : 'transparent-nav'; ?>">
+   <a href="index.php" class="navbar-brand coms-text">COMS</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
+   <span class="navbar-toggler-icon"></span>
+   </button>
+>>>>>>> 632714e (navbar changes)
    <div id="navigation" class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav pl-5">
          <?php
@@ -205,4 +227,9 @@
    </div>
 </nav>
 <!-- End Navigation -->
+<<<<<<< HEAD
+=======
+</body>
+</html>
+>>>>>>> 632714e (navbar changes)
 
