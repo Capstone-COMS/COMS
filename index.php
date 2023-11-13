@@ -20,6 +20,7 @@ include('includes/header.php');
 include('includes/nav.php');
 ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <style>
 =======
 <!DOCTYPE html>
@@ -193,6 +194,8 @@ include('includes/nav.php');
 </head>
 <body>
 >>>>>>> 88f2fb7 (index design)
+=======
+>>>>>>> 3ee3ec3 (design sidebar and nav(admin))
 <section class="vh-100" style="background-color: #9b593c;">
    <div class="container-fluid">
       <div class="row">
@@ -314,7 +317,10 @@ include('includes/nav.php');
     }
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 </body>
 </html>
 >>>>>>> 88f2fb7 (index design)
+=======
+>>>>>>> 3ee3ec3 (design sidebar and nav(admin))
