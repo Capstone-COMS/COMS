@@ -241,6 +241,7 @@ include('includes/nav.php');
 
         <section class="col-sm-10 py-5 dashboard">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <h4 style="color: white; opacity: 80%;">User Verifications</h4>
             <table class="table table-hover table-bordered" id="datatable">
                 <thead style="background-color: #c19f90;">
@@ -251,8 +252,11 @@ include('includes/nav.php');
                         <th>Status</th>
 =======
             <h4>User Verifications</h4>
+=======
+            <h4 style="color: white; opacity: 80%;">User Verifications</h4>
+>>>>>>> 2574a5e (new design)
             <table class="table table-bordered" id="datatable">
-                <thead>
+                <thead style="background-color: #c19f90;">
                     <tr>
                         <th>Submission ID</th>
                         <th>First Name</th>

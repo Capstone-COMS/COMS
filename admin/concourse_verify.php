@@ -158,6 +158,7 @@ include('includes/nav.php');
 
         <section class="col-sm-10 py-5 dashboard">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <h4 style="color: white; opacity: 80%;">Concourse Verifications</h4>
             <table class="table table-hover table-bordered" id="datatable">
                 <thead style="background-color: #c19f90;">
@@ -166,6 +167,11 @@ include('includes/nav.php');
             <table class="table table-bordered" id="datatable">
                 <thead>
 >>>>>>> 5cfeaee (design)
+=======
+            <h4 style="color: white; opacity: 80%;">Concourse Verifications</h4>
+            <table class="table table-bordered" id="datatable">
+                <thead style="background-color: #c19f90;">
+>>>>>>> 2574a5e (new design)
                     <tr>
                         <th>Concourse ID</th>
                         <th>Owner Name</th>
