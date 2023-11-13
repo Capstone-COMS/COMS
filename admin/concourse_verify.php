@@ -145,7 +145,11 @@ include('includes/nav.php');
     }
 
     .button:hover {
+<<<<<<< HEAD
         background-color: #c19f90 !important;
+=======
+        background-color: #eeeeee !important;
+>>>>>>> 5cfeaee (design)
     }
 </style>
 <div class="container-fluid">
@@ -153,9 +157,15 @@ include('includes/nav.php');
         <?php include('includes/sidebar.php'); ?>
 
         <section class="col-sm-10 py-5 dashboard">
+<<<<<<< HEAD
             <h4 style="color: white; opacity: 80%;">Concourse Verifications</h4>
             <table class="table table-hover table-bordered" id="datatable">
                 <thead style="background-color: #c19f90;">
+=======
+            <h4>Concourse Verifications</h4>
+            <table class="table table-bordered" id="datatable">
+                <thead>
+>>>>>>> 5cfeaee (design)
                     <tr>
                         <th>Concourse ID</th>
                         <th>Owner Name</th>

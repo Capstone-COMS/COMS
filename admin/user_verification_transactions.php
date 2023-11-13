@@ -304,6 +304,7 @@ include('includes/nav.php');
                     <form id="userDetailsForm">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <!-- Form structure goes here -->
 =======
                         <label for="submissionId">Submission ID:</label>
@@ -372,6 +373,9 @@ include('includes/nav.php');
                             <a href="#" id="rejectLink" class="button">Reject</a>
                         </div>
 >>>>>>> 3069851 (new design)
+=======
+                        <!-- Form structure goes here -->
+>>>>>>> 5cfeaee (design)
                     </form>
                 </div>
             </div>
@@ -475,6 +479,7 @@ include('includes/nav.php');
         userDetailsHTML += '</div>';
 
         userDetailsHTML += '<div class="form-row actions">';
+<<<<<<< HEAD
         userDetailsHTML += '<a href="user_verification_approve.php?id=' + user['verification_id'] + '" class="button" style="background-color: green; text-decoration: none;">Approve</a>';
         userDetailsHTML += '<a href="user_verification_reject.php?id=' + user['verification_id'] + '" class="button" style="background-color: red; text-decoration: none;">Reject</a>';
 =======
@@ -555,6 +560,11 @@ include('includes/nav.php');
         userDetailsHTML += '</div>';
 >>>>>>> 2a03e16 (new design)
         userDetailsHTML += '</div>';
+=======
+        userDetailsHTML += '<a href="user_verification_approve.php?id=' + user['verification_id'] + '" class="button" style="background-color: green; text-decoration: none;">Approve</a>';
+        userDetailsHTML += '<a href="user_verification_reject.php?id=' + user['verification_id'] + '" class="button" style="background-color: red; text-decoration: none;">Reject</a>';
+        userDetailsHTML += '</div>';
+>>>>>>> 5cfeaee (design)
 
         // Display user details in the modal form
         $('#userDetailsForm').html(userDetailsHTML);
@@ -562,10 +572,14 @@ include('includes/nav.php');
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5cfeaee (design)
     // Close User Details Modal
     $('#userDetailsClose').on('click', function() {
         $('#userDetailsModal').css('display', 'none');
     });
+<<<<<<< HEAD
 </script>
 =======
         // Close User Details Modal
@@ -589,3 +603,6 @@ include('includes/nav.php');
 >>>>>>> 3069851 (new design)
 =======
 >>>>>>> 2a03e16 (new design)
+=======
+</script>
+>>>>>>> 5cfeaee (design)
