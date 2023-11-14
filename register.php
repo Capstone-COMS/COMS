@@ -57,10 +57,13 @@ if (isset($_POST['register'])) {
                 $act_str = rand(100000, 10000000);
                 $activation_code = str_shuffle('abcdefghijklmno' . $act_str);
 
+                // Set OTP expiration time (5 minutes)
+                $expiration_time = date("Y-m-d H:i:s", strtotime('+1 minutes'));
+
                 // Insert data into the database
-                // $sql = "INSERT INTO user (uname, uemail, upassword, otp, activation_code, utype) VALUES ('$uname', '$uemail', '$hashedPassword', '$otp', '$activation_code','$usertype')";
-                $created_at = date("Y-m-d H:i:s"); // Get the current date and time
-                $sql = "INSERT INTO user (uname, uemail, upassword, otp, activation_code, utype, created_at) VALUES ('$uname', '$uemail', '$hashedPassword', '$otp', '$activation_code', '$usertype', '$created_at')";
+                $created_at = date("Y-m-d H:i:s");
+                $sql = "INSERT INTO user (uname, uemail, upassword, otp, activation_code, utype, created_at, otp_expiration) VALUES ('$uname', '$uemail', '$hashedPassword', '$otp', '$activation_code', '$usertype', '$created_at', '$expiration_time')";
+
 
                 $con->query($sql);
 
@@ -262,29 +265,62 @@ form .user-details .input-box{
         <div class="user-details">
           <div class="input-box">
             <span for="uname" class="details">Full Name</span>
-            <input type="text" name="uname"id="uname" autocomplete="off" placeholder="Enter your name" required>
+            <input type="text" 
+                   name="uname"
+                   id="uname" 
+                   autocomplete="off" 
+                   placeholder="Enter your name" 
+                   required>
           </div>
           
           <div class="input-box">
             <span for="uemail" class="details">Email</span>
-            <input type="text" name="uemail"id="uemail" autocomplete="off" placeholder="Enter your email" required>
+            <input type="text" 
+                   name="uemail"
+                   id="uemail" 
+                   autocomplete="off" 
+                   placeholder="Enter your email" 
+                   required>
           </div>
           
           <div class="input-box">
             <span for="upassword" class="details">Password</span>
-            <input type="password" name="upassword"id="upassword" placeholder="Enter your password" required>
+            <input type="password" 
+                   name="upassword"
+                   id="upassword" 
+                   placeholder="Enter your password" 
+                   required>
           </div>
           
           <div class="input-box">
             <span for="upassword" class="details">Confirm Password</span>
-            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required>
+            <input type="password" 
+                   name="confirm_password" 
+                   id="confirm_password" 
+                   placeholder="Confirm your password" 
+                   required>
           </div>
         </div>
         
         <div class="use-details">
-          <input type="radio" value="Owner" name="usertype" id="dot-1" required>
-          <input type="radio" value="Tenant" name="usertype" id="dot-2" required>
-          <input type="radio" value="Accountant" name="usertype" id="dot-3" required>
+          <input type="radio" 
+                 value="Owner" 
+                 name="usertype" 
+                 id="dot-1" 
+                 required>
+          
+          <input type="radio" 
+                 value="Tenant" 
+                 name="usertype" 
+                 id="dot-2" 
+                 required>
+
+          <input type="radio" 
+                 value="Accountant" 
+                 name="usertype" 
+                 id="dot-3" 
+                 required>
+                 
           <span class="use-title">User Type</span>
           <div class="category">
             <label for="dot-1">
