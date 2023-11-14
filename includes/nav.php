@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <style>
 =======
 <!DOCTYPE html>
@@ -7,6 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMS</title>
+=======
+
+>>>>>>> f233069 (WIP: fixing link visibilities)
     <style>
 >>>>>>> 632714e (navbar changes)
     .transparent-nav {
@@ -62,8 +66,7 @@
         </button>
 =======
 </style>
-</head>
-<body>
+
 <!-- Start Navigation -->
 <nav class="navbar navbar-expand-sm navbar-light pl-5 fixed-top <?php echo isset($_SESSION['uid']) ? '' : 'transparent-nav'; ?>">
    <a href="index.php" class="navbar-brand coms-text">COMS</a>
@@ -133,6 +136,7 @@
        echo '</a>';
        echo '<div class="dropdown-menu" aria-labelledby="userDropdown">';
        echo '<a class="dropdown-item" href="profile.php">
+<<<<<<< HEAD
            <i class="fa-regular fa-user"></i>
            My Profile</a>';
        echo '<a class="dropdown-item" href="transactions.php">
@@ -141,6 +145,14 @@
            <i class="fa-solid fa-power-off"></i> Logout
        </a>
        ';
+=======
+                <i class="fa-regular fa-user"></i>
+                My Profile</a>';
+       echo '<a class="dropdown-item" href="transactions.php">
+                <i class="fa-solid fa-file-lines"></i>                              Transactions</a>';
+       echo '<a class="dropdown-item" href="logout.php">
+                <i class="fa-solid fa-power-off"></i>Logout</a>';
+>>>>>>> f233069 (WIP: fixing link visibilities)
        echo '</div>';
        echo '</li>';
 
@@ -228,8 +240,11 @@
 </nav>
 <!-- End Navigation -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 </body>
 </html>
 >>>>>>> 632714e (navbar changes)
+=======
+>>>>>>> f233069 (WIP: fixing link visibilities)
 
