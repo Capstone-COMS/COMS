@@ -21,6 +21,7 @@ include('includes/nav.php');
 ?>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <style>
 =======
 <!DOCTYPE html>
@@ -33,6 +34,9 @@ include('includes/nav.php');
     <link rel="icon" href="assets/images/Logo-9b593c.png">
     <style>
 >>>>>>> 88f2fb7 (index design)
+=======
+  <style>
+>>>>>>> 1d68a3f (binalik ko yung style, nawala ih.)
       .about-section{
          width: 100%;
          height: auto;
@@ -42,6 +46,9 @@ include('includes/nav.php');
          padding: 50px;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1d68a3f (binalik ko yung style, nawala ih.)
       .about-section .par{
          padding-left: 20px;
          padding-bottom: 25px;
@@ -99,6 +106,7 @@ include('includes/nav.php');
             }
          }
 
+<<<<<<< HEAD
 =======
 
       .about-section .par{
@@ -166,6 +174,8 @@ include('includes/nav.php');
          }
 
 >>>>>>> 0acd34a (index change design)
+=======
+>>>>>>> 1d68a3f (binalik ko yung style, nawala ih.)
       .login-section h1 {
          font-family: 'Times New Roman';
          font-size: 50px;
@@ -174,8 +184,11 @@ include('includes/nav.php');
       }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 0acd34a (index change design)
+=======
+>>>>>>> 1d68a3f (binalik ko yung style, nawala ih.)
       .card {
       background-color: rgba(255, 255, 255, 0.8); /* Use rgba for opacity */
       transition: background-color 0.3s ease; /* Smooth transition for background color */
@@ -185,6 +198,7 @@ include('includes/nav.php');
       .card:hover {
          background-color: rgba(255, 255, 255, 1); /* Change opacity on hover */
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
    </style>
 =======
@@ -196,6 +210,9 @@ include('includes/nav.php');
 >>>>>>> 88f2fb7 (index design)
 =======
 >>>>>>> 3ee3ec3 (design sidebar and nav(admin))
+=======
+   </style>
+>>>>>>> 1d68a3f (binalik ko yung style, nawala ih.)
 <section class="vh-100" style="background-color: #9b593c;">
    <div class="container-fluid">
       <div class="row">
