@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <style>
 =======
 <!DOCTYPE html>
@@ -13,6 +14,9 @@
 >>>>>>> f233069 (WIP: fixing link visibilities)
     <style>
 >>>>>>> 632714e (navbar changes)
+=======
+<style>
+>>>>>>> 43cb434 (nav changes)
     .transparent-nav {
         background-color: transparent !important; /* Set the background color to transparent */
         box-shadow: none !important; /* Remove any box shadow */
@@ -33,11 +37,15 @@
         transition: background-color 0.3s ease;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 43cb434 (nav changes)
     .navbar-brand span {
         color: #9b593c;
         font-size: 30px;
         font-weight: bold;
     }
+<<<<<<< HEAD
 
     /* Additional style for navigation bar when user is logged in as owner or tenant */
     <?php if (isset($_SESSION['uid']) && (($_SESSION['utype'] == 'Owner') || ($_SESSION['utype'] == 'Tenant'))) : ?>
@@ -66,14 +74,42 @@
         </button>
 =======
 </style>
+=======
+>>>>>>> 43cb434 (nav changes)
 
+    /* Additional style for navigation bar when user is logged in as owner or tenant */
+    <?php if (isset($_SESSION['uid']) && (($_SESSION['utype'] == 'Owner') || ($_SESSION['utype'] == 'Tenant'))) : ?>
+        .navbar {
+            background-color: #ffffff; /* Set your desired background color */
+        }
+
+        .navbar-nav .nav-link {
+            color: #9b593c !important; /* Set your desired text color */
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #9b593c !important;
+        }
+    <?php endif; ?>
+</style>
 <!-- Start Navigation -->
 <nav class="navbar navbar-expand-sm navbar-light pl-5 fixed-top <?php echo isset($_SESSION['uid']) ? '' : 'transparent-nav'; ?>">
+<<<<<<< HEAD
    <a href="index.php" class="navbar-brand coms-text">COMS</a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
    <span class="navbar-toggler-icon"></span>
    </button>
 >>>>>>> 632714e (navbar changes)
+=======
+    <a href="index.php" class="navbar-brand">
+            <img src="assets/images/Logo-9b593c.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+            <span>COMS</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+>>>>>>> 43cb434 (nav changes)
    <div id="navigation" class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav pl-5">
          <?php
