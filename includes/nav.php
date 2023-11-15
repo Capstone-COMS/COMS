@@ -137,6 +137,7 @@
        echo '<div class="dropdown-menu" aria-labelledby="userDropdown">';
        echo '<a class="dropdown-item" href="profile.php">
 <<<<<<< HEAD
+<<<<<<< HEAD
            <i class="fa-regular fa-user"></i>
            My Profile</a>';
        echo '<a class="dropdown-item" href="transactions.php">
@@ -153,6 +154,16 @@
        echo '<a class="dropdown-item" href="logout.php">
                 <i class="fa-solid fa-power-off"></i>Logout</a>';
 >>>>>>> f233069 (WIP: fixing link visibilities)
+=======
+           <i class="fa-regular fa-user"></i>
+           My Profile</a>';
+       echo '<a class="dropdown-item" href="transactions.php">
+           <i class="fa-solid fa-file-lines"></i> Transactions</a>';
+       echo '<a class="dropdown-item" href="#" onclick="event.preventDefault(); showLogoutModal();">
+           <i class="fa-solid fa-power-off"></i> Logout
+       </a>
+       ';
+>>>>>>> c94b814 (logout, register otp alrt)
        echo '</div>';
        echo '</li>';
 
