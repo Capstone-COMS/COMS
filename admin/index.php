@@ -29,17 +29,24 @@ if (isset($_POST['adminlogin'])) {
 
       // Query the database to check if the user exists
 <<<<<<< HEAD
+<<<<<<< HEAD
       $is_aname_or_aemail = filter_var($aname_or_aemail, FILTER_VALIDATE_EMAIL);
 =======
       $is_aname_or_aemail= filter_var($aname_or_aemail, FILTER_VALIDATE_EMAIL);
         // Prepare the login query
+=======
+      $is_aname_or_aemail = filter_var($aname_or_aemail, FILTER_VALIDATE_EMAIL);
+
+      // Prepare the login query
+>>>>>>> 39648e7 (login and nav)
       if ($is_aname_or_aemail) {
-        $loginQuery = "SELECT * FROM user WHERE uemail = '$aname_or_aemail'";
-      } else{
-        $loginQuery = "SELECT * FROM user WHERE uname = '$aname_or_aemail'";
+          $loginQuery = "SELECT * FROM admin WHERE aemail = '$aname_or_aemail'";
+      } else {
+          $loginQuery = "SELECT * FROM admin WHERE aname = '$aname_or_aemail'";
       }
 >>>>>>> bcb1d7a (login using username or email)
 
+<<<<<<< HEAD
       // Prepare the login query
       if ($is_aname_or_aemail) {
           $loginQuery = "SELECT * FROM admin WHERE aemail = '$aname_or_aemail'";
@@ -47,6 +54,8 @@ if (isset($_POST['adminlogin'])) {
           $loginQuery = "SELECT * FROM admin WHERE aname = '$aname_or_aemail'";
       }
 
+=======
+>>>>>>> 39648e7 (login and nav)
       // Execute the query
       $result = $con->query($loginQuery);
 
@@ -109,6 +118,9 @@ if (isset($_POST['adminlogin'])) {
                     }
 ?></p>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 39648e7 (login and nav)
       <div class="form-group form">
         <input type="text" class="form-control form-input" name="aname_or_aemail" id="aname_or_aemail" autocomplete="on" placeholder=""
           value="<?php echo isset($_POST['aname_or_aemail']) ? htmlspecialchars($_POST['aname_or_aemail']) : ''; ?>"/>
@@ -120,6 +132,7 @@ if (isset($_POST['adminlogin'])) {
         <label for="apassword" class="form-label">
           <i class="fas fa-lock"></i>Password</label>
         </div>
+<<<<<<< HEAD
 =======
 
        
@@ -152,6 +165,8 @@ if (isset($_POST['adminlogin'])) {
             >
           </div>
 >>>>>>> e9d6595 (login using username or email)
+=======
+>>>>>>> 39648e7 (login and nav)
      
       <button type="submit"
         class="btn border-danger text-danger mt-3 btn-block shadow-sm font-weight-bold"name="adminlogin">

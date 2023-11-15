@@ -5,11 +5,17 @@
         font-weight: bold;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     .navbar-nav .nav-link {
             color: #9b593c !important; /* Set your desired text color */
         }
 =======
 >>>>>>> 3ee3ec3 (design sidebar and nav(admin))
+=======
+    .navbar-nav .nav-link {
+            color: #9b593c !important; /* Set your desired text color */
+        }
+>>>>>>> 39648e7 (login and nav)
 </style>
 <!-- Start Navigation -->
 <nav class="navbar navbar-expand-sm navbar-light pl-5 fixed-top" style="background-color: #ffffff;">
