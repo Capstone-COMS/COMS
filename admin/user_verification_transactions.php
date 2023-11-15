@@ -226,7 +226,7 @@ include('includes/nav.php');
         }
 
         .button:hover {
-            background-color: #eeeeee !important;
+            background-color: #c19f90 !important;
         }
     </style>
 <<<<<<< HEAD

@@ -109,6 +109,7 @@ if (isset($_POST['register'])) {
 include('includes/header.php');
 include('includes/nav.php');
 ?>
+<<<<<<< HEAD
 >>>>>>> 7aa9815 (register new ui V2)
    <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -232,30 +233,76 @@ form .input-box span.details{
  form .button input:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-135deg, #71b7e6, #393E46);
+=======
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+>>>>>>> 1ca2cde (color changes)
   }
- @media(max-width: 584px){
- .container{
-  max-width: 100%;
-}
-form .user-details .input-box{
-    margin-bottom: 15px;
-    width: 100%;
+  body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    /* background: linear-gradient(135deg, #71b7e6, #393E46); */
+    background-color: #9b593c;
   }
-  form .category{
+  .container{
+    max-width: 700px;
     width: 100%;
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
+  .container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+  }
+  .container .title::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    /* background: linear-gradient(135deg, #71b7e6, #393E46); */
+    background-color: #c19f90;
   }
   .content form .user-details{
-    max-height: 300px;
-    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
   }
-  .user-details::-webkit-scrollbar{
-    width: 5px;
+  form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
   }
+  form .input-box span.details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
   }
-  @media(max-width: 459px){
-  .container .content .category{
-    flex-direction: column;
+  .user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
   }
+<<<<<<< HEAD
 }
    </style>
 <<<<<<< HEAD
@@ -333,6 +380,8 @@ include('includes/nav.php');
     border-bottom-width: 2px;
     transition: all 0.3s ease;
   }
+=======
+>>>>>>> 1ca2cde (color changes)
   .user-details .input-box input:focus,
   .user-details .input-box input:valid{
     border-color: #393E46;
@@ -418,10 +467,13 @@ include('includes/nav.php');
     }
   }
 </style>
+<<<<<<< HEAD
 =======
 >>>>>>> 873d5e8 (register new ui)
 =======
 >>>>>>> 7aa9815 (register new ui V2)
+=======
+>>>>>>> 1ca2cde (color changes)
   <div class="container" style="margin-top: 5%;">
     <div class="title">Registration</div>
     <div class="content">

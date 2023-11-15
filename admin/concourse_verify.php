@@ -146,10 +146,14 @@ include('includes/nav.php');
 
     .button:hover {
 <<<<<<< HEAD
+<<<<<<< HEAD
         background-color: #c19f90 !important;
 =======
         background-color: #eeeeee !important;
 >>>>>>> 5cfeaee (design)
+=======
+        background-color: #c19f90 !important;
+>>>>>>> 1ca2cde (color changes)
     }
 </style>
 <div class="container-fluid">
@@ -169,7 +173,7 @@ include('includes/nav.php');
 >>>>>>> 5cfeaee (design)
 =======
             <h4 style="color: white; opacity: 80%;">Concourse Verifications</h4>
-            <table class="table table-bordered" id="datatable">
+            <table class="table table-hover table-bordered" id="datatable">
                 <thead style="background-color: #c19f90;">
 >>>>>>> 2574a5e (new design)
                     <tr>
