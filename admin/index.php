@@ -108,6 +108,7 @@ if (isset($_POST['adminlogin'])) {
                         echo $error_message;
                     }
 ?></p>
+<<<<<<< HEAD
       <div class="form-group form">
         <input type="text" class="form-control form-input" name="aname_or_aemail" id="aname_or_aemail" autocomplete="on" placeholder=""
           value="<?php echo isset($_POST['aname_or_aemail']) ? htmlspecialchars($_POST['aname_or_aemail']) : ''; ?>"/>
@@ -119,6 +120,38 @@ if (isset($_POST['adminlogin'])) {
         <label for="apassword" class="form-label">
           <i class="fas fa-lock"></i>Password</label>
         </div>
+=======
+
+       
+ 
+          <div class="form-group form">
+          <input
+    type="text"
+    class="form-control form-input"
+    name="aname_or_aemail"
+    id="aemail"
+    autocomplete="on"
+    placeholder=""
+    value="<?php echo isset($_POST['aemail']) ? htmlspecialchars($_POST['aemail']) : ''; ?>"
+/>
+
+            <label for="aname_or_aemail" class="form-label">
+              <i class="fa-solid fa-envelope"></i>
+              Email</label>
+          </div>
+          <div class="form-group form">
+            <input
+              type="password"
+              class="form-control form-input"
+              name="apassword"
+              id="password"
+              placeholder=""
+            />
+            <label for="apassword" class="form-label">
+            <i class="fas fa-lock"></i>              Password</label
+            >
+          </div>
+>>>>>>> e9d6595 (login using username or email)
      
       <button type="submit"
         class="btn border-danger text-danger mt-3 btn-block shadow-sm font-weight-bold"name="adminlogin">
