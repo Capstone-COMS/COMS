@@ -411,14 +411,18 @@ include('includes/nav.php');
         <form action="" method="POST">
             <div class="user-details">  
                 <div class="input-box">
-                    <span class="details">Email</span>
+                    <span class="details">Username Or Email</span>
                     <input 
                         type="text" 
-                        name="uemail" 
+                        name="uname_or_uemail" 
                         id="uemail"
                         autocomplete="off"
+<<<<<<< HEAD
                         placeholder="Enter your email" 
 >>>>>>> 94ccbd5 (login new ui)
+=======
+                        placeholder="Enter your username or email" 
+>>>>>>> bcb1d7a (login using username or email)
                         required>
                 </div>
 

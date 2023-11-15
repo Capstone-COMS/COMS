@@ -28,7 +28,17 @@ if (isset($_POST['adminlogin'])) {
       $apassword = $_POST['apassword'];
 
       // Query the database to check if the user exists
+<<<<<<< HEAD
       $is_aname_or_aemail = filter_var($aname_or_aemail, FILTER_VALIDATE_EMAIL);
+=======
+      $is_aname_or_aemail= filter_var($aname_or_aemail, FILTER_VALIDATE_EMAIL);
+        // Prepare the login query
+      if ($is_aname_or_aemail) {
+        $loginQuery = "SELECT * FROM user WHERE uemail = '$aname_or_aemail'";
+      } else{
+        $loginQuery = "SELECT * FROM user WHERE uname = '$aname_or_aemail'";
+      }
+>>>>>>> bcb1d7a (login using username or email)
 
       // Prepare the login query
       if ($is_aname_or_aemail) {
