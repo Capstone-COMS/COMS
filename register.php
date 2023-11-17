@@ -484,10 +484,14 @@ include('includes/nav.php');
               echo $error_message;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
 =======
         ?>
 >>>>>>> 873d5e8 (register new ui)
+=======
+?>
+>>>>>>> a3d44ef (fixing otp error)
       </p>
 
         <div class="user-details">

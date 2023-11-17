@@ -7,11 +7,16 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function verifyOTP($con, $email, $otp)
 {
 =======
 function verifyOTP($con, $email, $otp) {
 >>>>>>> c94b814 (logout, register otp alrt)
+=======
+function verifyOTP($con, $email, $otp)
+{
+>>>>>>> a3d44ef (fixing otp error)
     $sql = "SELECT * FROM user WHERE uemail = '$email' AND otp = '$otp'";
     $result = $con->query($sql);
 
@@ -29,6 +34,7 @@ function verifyOTP($con, $email, $otp) {
 if (isset($_POST['verify_otp'])) {
     $email = $_GET['email'];
     $otp = $_POST['otp'];
+<<<<<<< HEAD
     if (verifyOTP($con, $email, $otp)) {
         $successMessage = "Registration successful! You can now log in.";
 
@@ -56,6 +62,18 @@ if (isset($_POST['verify_otp'])) {
     if (verifyOTP($con, $email, $otp)) {
         $successMessage = "Registration successful! You can now log in.";
 >>>>>>> c94b814 (logout, register otp alrt)
+=======
+    if (verifyOTP($con, $email, $otp)) {
+        $successMessage = "Registration successful! You can now log in.";
+
+        // Update user verification status
+        $sql = "UPDATE user SET verified = 1 WHERE uemail = '$email'";
+        $con->query($sql);
+
+        // Redirect to success page or login page
+        header('Location: login.php');
+        exit();
+>>>>>>> a3d44ef (fixing otp error)
     } else {
         $errorMessage = "Invalid OTP. Please try again.";
     }
@@ -80,6 +98,9 @@ if ($result->num_rows > 0) {
 <?php include('includes/nav.php') ?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a3d44ef (fixing otp error)
 <style>
     /* Add your CSS styles here */
     /* ... */
@@ -232,6 +253,7 @@ form .user-details .input-box{
 }
 </style>
 </style>
+<<<<<<< HEAD
 
 <div class="container">
     <div class="title">OTP Verification</div>
@@ -321,52 +343,96 @@ form .user-details .input-box{
         <h2 class="text-center">OTP Verified</h2>
         <div class="row mt-4 mb-4">
             <div class="col-md-6 offset-md-3">
+=======
+>>>>>>> a3d44ef (fixing otp error)
 
-                <?php if (isset($successMessage)) : ?>
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Registration Successful!</h4>
-                        <p>You can now log in.</p>
-                        <hr>
-                        <p class="mb-0">
-                            <a href="login.php" class="btn btn-primary">Go to Login</a>
-                        </p>
-                    </div>
-                <?php else : ?>
-                    <form action="" class="shadow-lg p-4" method="POST">
-<?php if (isset($errorMessage)) : ?>
-    <div class="alert alert-danger" role="alert">
-        <strong>Error:</strong> <?php echo $errorMessage; ?>
-    </div>
-<?php elseif (isset($_GET['success']) && $_GET['success'] == 1) : ?>
-    <div class="alert alert-info" role="alert">
-        OTP has been successfully resent. Please check your email.
-    </div>
-<?php endif; ?>
-
-                        <div class="form-group form">
-                            <input type="text" class="form-control form-input" name="otp" id="otp" autocomplete="off" placeholder="Enter OTP">
-                            <label for="otp" class="form-label">
-                                <i class="fa-solid fa-key"></i>
-                                OTP
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-danger mt-3 btn-block shadow-sm font-weight-bold" name="verify_otp">Verify OTP</button>
-                    </form>
-
-                    <!-- OTP Resend -->
-                    <form action="otp-resend.php" method="POST">
-                        <div class="form-group form">
-                            <input type="email" class="form-control form-input" name="email" id="email" autocomplete="off" placeholder="Enter your email">
-                            <label for "email" class="form-label">Email</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="resend_otp">Resend OTP</button>
-                    </form>
-                    <!-- Otp resend -->
-                <?php endif; ?>
-            </div>
+<div class="container">
+    <div class="title">OTP Verification</div>
+    <?php if (isset($successMessage)) : ?>
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Registration Successful!</h4>
+            <p>You can now log in.</p>
+            <hr>
+            <p class="mb-0">
+                <a href="login.php" class="btn btn-primary">Go to Login</a>
+            </p>
         </div>
+<<<<<<< HEAD
     </div>
 </section>
 >>>>>>> c94b814 (logout, register otp alrt)
+=======
+    <?php else : ?>
+        <form action="" class="shadow-lg p-4" method="POST">
+            <?php if (isset($errorMessage)) : ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error:</strong> <?php echo $errorMessage; ?>
+                </div>
+            <?php elseif (isset($_GET['success']) && $_GET['success'] == 1) : ?>
+                <div class="alert alert-info" role="alert">
+                    OTP has been successfully resent. Please check your email.
+                </div>
+            <?php endif; ?>
+
+            <div class="content">
+                <p>
+                    <?php
+                    if (isset($errorMessage)) {
+                        echo $errorMessage;
+                    }
+?>
+                </p>
+                <div class="user-details">
+                    <div class="input-box">
+                        <span for="otp" class="details">OTP</span>
+                        <input type="text"
+                               name="otp"
+                               id="otp"
+                               autocomplete="off"
+                               placeholder="An OTP (One-Time Password) has been sent to your email."
+                               required>
+                    </div>
+                </div>
+
+                <div class="button">
+                    <!-- <input type="submit" name="verify_otp"> -->
+                    <button type="submit" class="btn btn-danger mt-3 btn-block shadow-sm font-weight-bold" name="verify_otp">Verify OTP</button>
+
+                </div>
+            </div>
+        </form>
+
+        <!-- Countdown Timer -->
+        <div class="text-center" id="timer"></div>
+    <?php endif; ?>
+</div>
+</div>
+
+<script>
+    // Set the expiration time for the countdown timer
+    var expirationTime = <?php echo $expiration_time ? $expiration_time * 1000 : 0; ?>;
+
+    if (expirationTime > 0) {
+        // Update the countdown every second
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = expirationTime - now;
+
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the timer
+            document.getElementById("timer").innerHTML = "Time remaining: " + minutes + "m " + seconds + "s ";
+
+            // If the timer reaches zero, redirect the user or take appropriate action
+            if (distance < 0) {
+                clearInterval(x);
+                // Handle expired timer (e.g., redirect to a different page)
+                window.location.href = "otp-resend.php";
+            }
+        }, 1000);
+    }
+</script>
+>>>>>>> a3d44ef (fixing otp error)
 
 <?php include('includes/footer.php') ?>
