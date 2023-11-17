@@ -392,6 +392,9 @@ include('includes/nav.php');
     <div class="title">Login</div>
     <div class="content">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0f25eaa (display error message)
     <?php if(isset($error_message)) : ?>
             <div class="error-message">
                 <?php echo $error_message; ?>
