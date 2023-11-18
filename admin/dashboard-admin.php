@@ -69,6 +69,33 @@
             display: flex;
             justify-content: center;
         }
+
+        #feedbackSection {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1; /* Take full width */
+            margin-top: 20px; /* Adjust the top margin as needed */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 300px; /* Adjust the max-height as needed */
+            overflow-y: auto;
+        }
+
+        #feedbackList {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 400px; /* Adjust the max-width as needed */
+        }
+
+        #feedbackList li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -161,18 +188,21 @@
         </div>
     </section>
 
-    <section>
-        <h2>Feedback and Support</h2>
-        <div class="section-content">
-            <ul>
-                <li>User Feedback 1</li>
-                <li>User Feedback 2</li>
-                <!-- Add more feedback items -->
-            </ul>
-            <div class="section-item">
-                <button>View Support Tickets</button>
-            </div>
-        </div>
+    <section id="feedbackSection">
+        <h2>Feedback</h2>
+        <ul id="feedbackList">
+            <!-- Add more feedback items -->
+            <li>User Feedback 1</li>
+            <li>User Feedback 2</li>
+            <li>User Feedback 3</li>
+            <li>User Feedback 4</li>
+            <li>User Feedback 5</li>
+            <li>User Feedback 6</li>
+            <li>User Feedback 7</li>
+            <li>User Feedback 8</li>
+            <li>User Feedback 9</li>
+            <li>User Feedback 10</li>
+        </ul>
     </section>
 
     <script>
