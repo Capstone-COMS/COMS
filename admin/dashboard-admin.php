@@ -17,7 +17,6 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
         }
-
         section {
             flex: 1;
             padding: 30px; /* Increase the padding for more height */
@@ -25,17 +24,14 @@
             margin: 10px;
             border-radius: 5px;
         }
-
         h2 {
             color: #333;
         }
-
         .section-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .section-item {
             flex: 1;
             padding: 20px; /* Increase the padding for more height */
@@ -44,7 +40,6 @@
             margin: 10px;
             text-align: center;
         }
-
         .pie-chart {
             flex: 1;
             padding: 20px; /* Increase the padding for more height */
@@ -56,20 +51,17 @@
             flex-direction: column;
             align-items: center;
         }
-
         canvas {
             max-width: 150px; /* Increase the max-width for larger charts */
             max-height: 150px; /* Increase the max-height for larger charts */
             width: 100%;
             height: auto;
         }
-
         /* Ensure labels are visible */
         .legend {
             display: flex;
             justify-content: center;
         }
-
         #feedbackSection {
             background-color: #f4f4f4;
             padding: 20px;
@@ -82,14 +74,12 @@
             max-height: 300px; /* Adjust the max-height as needed */
             overflow-y: auto;
         }
-
         #feedbackList {
             list-style: none;
             padding: 0;
             width: 100%;
             max-width: 400px; /* Adjust the max-width as needed */
         }
-
         #feedbackList li {
             margin-bottom: 10px;
             border-bottom: 1px solid #ccc;
@@ -98,7 +88,6 @@
         }
     </style>
 </head>
-
 <body>
     <section>
         <h2>User Management</h2>
@@ -120,7 +109,6 @@
             </div>
         </div>
     </section>
-
     <section>
         <h2>Map Management</h2>
         <div class="section-content">
@@ -137,7 +125,6 @@
             </div>
         </div>
     </section>
-
     <section>
         <h2>Verified Users</h2>
         <div class="section-content">
@@ -155,7 +142,6 @@
             </div>
         </div>
     </section>
-
     <section>
         <h2>Concession Management</h2>
         <div class="section-content">
@@ -173,7 +159,6 @@
             </div>
         </div>
     </section>
-
     <section>
         <h2>System Logs</h2>
         <div class="section-content">
@@ -187,7 +172,6 @@
             </div>
         </div>
     </section>
-
     <section id="feedbackSection">
         <h2>Feedback</h2>
         <ul id="feedbackList">
@@ -204,7 +188,6 @@
             <li>User Feedback 10</li>
         </ul>
     </section>
-
     <script>
         // Mock data for pie charts
         const userManagementPieData = {
@@ -214,7 +197,6 @@
                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
             }],
         };
-
         const mapManagementPieData = {
             labels: ['Applications', 'Verified Maps'],
             datasets: [{
@@ -222,7 +204,6 @@
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }],
         };
-
         const verifiedUsersPieData = {
             labels: ['Verified', 'Not Verified'],
             datasets: [{
@@ -230,7 +211,6 @@
                 backgroundColor: ['#FFCE56', '#4CAF50'],
             }],
         };
-
         const concessionManagementPieData = {
             labels: ['Active', 'Pending', 'Inactive'],
             datasets: [{
@@ -238,28 +218,23 @@
                 backgroundColor: ['#FFCE56', '#36A2EB', '#4CAF50'],
             }],
         };
-
         // Render pie charts
         const userManagementPieChart = new Chart(document.getElementById('userManagementPieChart'), {
             type: 'pie',
             data: userManagementPieData,
         });
-
         const mapManagementPieChart = new Chart(document.getElementById('mapManagementPieChart'), {
             type: 'pie',
             data: mapManagementPieData,
         });
-
         const verifiedUsersPieChart = new Chart(document.getElementById('verifiedUsersPieChart'), {
             type: 'pie',
             data: verifiedUsersPieData,
         });
-
         const concessionManagementPieChart = new Chart(document.getElementById('concessionManagementPieChart'), {
             type: 'pie',
             data: concessionManagementPieData,
         });
     </script>
 </body>
-
 </html>
