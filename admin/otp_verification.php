@@ -45,7 +45,7 @@ body{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #393E46);
+  background-color: #9b593c;
 }
 .container{
   max-width: 700px;
@@ -68,7 +68,7 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #393E46);
+  background-color: #9b593c;
 }
 .content form .user-details{
   display: flex;
@@ -148,11 +148,11 @@ form .input-box span.details{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #393E46);
+   background-color: #9b593c;
  }
  form .button input:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #393E46);
+  background-color: #c19f90;
   }
  @media(max-width: 584px){
  .container{
@@ -200,7 +200,7 @@ form .user-details .input-box{
                            placeholder="An OTP (One-Time Password) has been sent to your email."
                            required>
                 </div>
-            </div>
+</div>
 
             <div class="button">
                     <input type="submit" name="verify_otp">
