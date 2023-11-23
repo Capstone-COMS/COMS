@@ -21,8 +21,7 @@ if (!isset($_SESSION['uid'])) {
 
 $uid = $_SESSION['uid'];
 
-// Check the status in the user_verification table
-$verificationStatus = "Not approved"; // Default status
+$verificationStatus = ""; // Default status
 
 $verificationQuery = "SELECT status, first_name, last_name, address, gender, birthday FROM user_verification WHERE user_id = $uid";
 $verificationResult = mysqli_query($con, $verificationQuery);
@@ -64,42 +63,51 @@ if ($userResult) {
 include('includes/header.php');
 include('includes/nav.php');
 ?>
-<section class="user-profile">
-   <div class="container-fluid p-4 shadow mx-auto" style="max-width: 1000px;">
+<style>
+   .btn-sm:hover{
+      background-color: #c19f90 !important;
+   }
+   h6, h3{
+      color: white;
+      opacity: 80%   ;
+   }
+   </style>
+<section class="user-profiles">
+   <div class="container-fluid p-4 shadow mx-auto" style="max-width: 1000px; margin-top: 10%; background-color: #b1765c; border-radius: 20px;">
       <div class="row">
          <div class="col-sm-4 col-md-3">
             <?php if (!empty($_SESSION['uimage'])): ?>
-            <img src="<?php echo $_SESSION['uimage']; ?>" class="border border-primary d-block mx-auto rounded-circle" style="width:150px; height:150px">
+               <img src="<?php echo $_SESSION['uimage']; ?>" class="border border-primary d-block mx-auto rounded-circle" style="width: 150px; height: 150px; background-color: white;">
             <?php else: ?>
-            <img src="default-image.jpg" class="border border-primary d-block mx-auto rounded-circle" style="width:150px; height:150px">
+               <img src="default-image.jpg" class="border border-primary d-block mx-auto rounded-circle" style="width: 150px; height: 150px; background-color: white; opacity: 85%;">
             <?php endif; ?>
             <h6 class="text-center"><?php echo $_SESSION['utype']; ?>#<?php echo $_SESSION['uid']; ?></h6>
-            <h3 class="text-center"><?php echo $_SESSION['uname']; ?></h3>
+            <h3 class="text-center"><?php echo $_SESSION['username']; ?></h3>
             <br>
             <div class="text-center">
-               <a href="profile_edit.php"> <button class="btn-sm btn btn-success">Edit Profile</button> </a>
+               <a href="profile_edit.php"><button class="btn-sm" style="background-color: #9b593c;">Edit Profile</button></a>
                <?php if ($verificationStatus === 'approved'): ?>
-               <button class="btn-sm btn btn-success" disabled>Verified</button>
+                     <button class="btn-sm" style="background-color: #9b593c;" disabled>Verified</button>
                <?php else: ?>
-               <a href="verification_account.php">
-               <button class="btn-sm btn btn-success">Verify Account</button>
-               </a>
+                     <a href="verification_account.php">
+                        <button class="btn-sm" style="background-color: #9b593c;">Verify Account</button>
+                     </a>
                <?php endif; ?>
             </div>
          </div>
-         <div class="col-sm-8 col-md-9 bg-light p-2">
-            <table class="table table-hover table-striped table-bordered">
+         <div class="col-sm-8 col-md-9 bg-light p-2"  style="border-radius: 10px; max-width: 600px; margin: 0 auto;">
+            <table class="table" style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
                <tr>
-                  <th>Name:</th>
-                  <td><?php echo $_SESSION['uname']; ?></td>
+                  <th>User Type:</th>
+                  <td><?php echo $_SESSION['utype']; ?></td>
+               </tr>
+               <tr>
+                  <th>Username:</th>
+                  <td><?php echo $_SESSION['username']; ?></td>
                </tr>
                <tr>
                   <th>Email:</th>
                   <td><?php echo $_SESSION['uemail']; ?></td>
-               </tr>
-               <tr>
-                  <th>User Type:</th>
-                  <td><?php echo $_SESSION['utype']; ?></td>
                </tr>
                <tr>
                   <th>Phone:</th>
@@ -133,6 +141,20 @@ include('includes/nav.php');
                <!-- Add other verification fields as needed -->
                <?php endif; ?>
             </table>
+            <div class="col-sm-8 col-md-9 bg-light p-2" style="border-radius: 10px; max-width: 600px; margin: 0 auto;">
+               <?php if ($verificationStatus === 'approved'): ?>
+                  <!-- No message when the account is approved -->
+               <?php elseif ($verificationStatus === 'rejected'): ?>
+                  <p>Verification of account is rejected. Please fill up the form again:</p>
+                  <form action="verification_account_process.php" method="post" enctype="multipart/form-data">
+               <button type="submit" class="btn-sm" name="submit_verification" style="background-color: #9b593c;">Submit Verification</button>
+               </form>
+                  <?php elseif ($verificationStatus === 'pending'): ?>
+                     <p>You have already submitted the verification. Please wait for approval.</p>
+                  <?php else: ?>
+                     <p>Please, verify your account.</p>
+               <?php endif; ?>
+            </div>
          </div>
       </div>
       <br>

@@ -1,5 +1,4 @@
-
-    <style>
+<style>
     .transparent-nav {
         background-color: transparent !important; /* Set the background color to transparent */
         box-shadow: none !important; /* Remove any box shadow */
@@ -12,21 +11,65 @@
     .nav-link{
         color: white !important;
     }
-
+    
+    .logout-btn{
+        background-color: #c19f90;
+        color: #fff;
+    }
+    .logout-btn:hover {
+        background-color: #9b593c;
+        color: #fff;
+    }
     /* Hover effect for navigation links */
     .nav-link:hover{
         background-color: rgba(255, 255, 255, 0.3);
         color: #eeeeee !important;
         transition: background-color 0.3s ease;
     }
-</style>
+    .navbar-brand span {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        opacity: 80%;
+    }
+    .dropdown-item:hover {
+        background-color: #c19f90 !important; /* Set your desired hover background color */
+    }
 
+    /* Additional style for navigation bar when user is logged in as owner or tenant */
+    <?php if (isset($_SESSION['uid']) && (($_SESSION['utype'] == 'Owner') || ($_SESSION['utype'] == 'Tenant'))) : ?>
+        .navbar {
+            background-color: #ffffff; /* Set your desired background color */
+        }
+
+        .navbar-nav .nav-link {
+            color: #9b593c !important; /* Set your desired text color */
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #9b593c !important;
+        }
+        .navbar-brand span {
+        color: #9b593c;
+        font-size: 30px;
+        font-weight: bold;
+        }
+    <?php endif; ?>
+</style>
 <!-- Start Navigation -->
 <nav class="navbar navbar-expand-sm navbar-light pl-5 fixed-top <?php echo isset($_SESSION['uid']) ? '' : 'transparent-nav'; ?>">
-   <a href="index.php" class="navbar-brand coms-text">COMS</a>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
-   <span class="navbar-toggler-icon"></span>
-   </button>
+    <a href="index.php" class="navbar-brand">
+            <?php if (isset($_SESSION['uid']) && (($_SESSION['utype'] == 'Owner') || ($_SESSION['utype'] == 'Tenant'))) : ?>
+            <img src="assets/images/Logo-9b593c.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+            <?php else: ?>
+            <img src="assets/images/white-version-logo.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top" style="opacity: 80%;">
+            <?php endif; ?>
+            <span>COMS</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
    <div id="navigation" class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav pl-5">
          <?php
@@ -89,12 +132,14 @@
        echo '</a>';
        echo '<div class="dropdown-menu" aria-labelledby="userDropdown">';
        echo '<a class="dropdown-item" href="profile.php">
-                <i class="fa-regular fa-user"></i>
-                My Profile</a>';
+           <i class="fa-regular fa-user"></i>
+           My Profile</a>';
        echo '<a class="dropdown-item" href="transactions.php">
-                <i class="fa-solid fa-file-lines"></i>                              Transactions</a>';
-       echo '<a class="dropdown-item" href="logout.php">
-                <i class="fa-solid fa-power-off"></i>Logout</a>';
+           <i class="fa-solid fa-file-lines"></i> Transactions</a>';
+       echo '<a class="dropdown-item" href="#" onclick="event.preventDefault(); showLogoutModal();">
+           <i class="fa-solid fa-power-off"></i> Logout
+       </a>
+       ';
        echo '</div>';
        echo '</li>';
 
@@ -136,6 +181,41 @@
 ?>
       </ul>
       
+<!-- Add the modal HTML code at the end of your page -->
+<div class="modal" tabindex="-1" role="dialog" id="logoutModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color: #b1765c;">
+            <div class="text-center">
+                <p style="font-weight: bold; color: #fff;">Are you sure you want to logout?</p>
+                <button type="button" class="btn btn-secondary" onclick="hideModal()">Cancel</button>
+                <button type="button" class="btn logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function showLogoutModal() {
+        // Display the modal
+        document.getElementById('logoutModal').style.display = 'block';
+        document.getElementById('modalOverlay').style.display = 'block';
+    }
+
+    function hideModal() {
+        // Hide the modal
+        document.getElementById('logoutModal').style.display = 'none';
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+
+    // Add a function to handle the actual logout action
+    function logout() {
+        // Add your logout logic here
+        // For example, you can redirect the user to the logout page
+        window.location.href = 'logout.php';
+    }
+</script>
+
    </div>
 </nav>
 <!-- End Navigation -->

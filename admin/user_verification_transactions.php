@@ -142,7 +142,7 @@ include('includes/nav.php');
         }
 
         .button:hover {
-            background-color: #eeeeee !important;
+            background-color: #c19f90 !important;
         }
     </style>
 <div class="container-fluid">
@@ -151,27 +151,27 @@ include('includes/nav.php');
 
         <section class="col-sm-10 py-5 dashboard">
             <h4 style="color: white; opacity: 80%;">User Verifications</h4>
-            <table class="table table-bordered" id="datatable">
+            <table class="table table-hover table-bordered" id="datatable">
                 <thead style="background-color: #c19f90;">
                     <tr>
                         <th>Submission ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <!-- <th>Actions</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<tr>';
+                        echo '<tr class="user-row" data-user="' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . '">';
                         echo '<td>' . $row['verification_id'] . '</td>';
                         echo '<td>' . $row['first_name'] . '</td>';
                         echo '<td>' . $row['last_name'] . '</td>';
                         echo '<td>' . $row['status'] . '</td>';
-                        echo '<td>';
-                        echo '<button type="button" class="button" onclick="openUserDetailsModal(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ')">View User</button>';
-                        echo '</td>';
+                        // echo '<td>';
+                        // echo '<button type="button" class="button" onclick="openUserDetailsModal(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ')">View User</button>';
+                        // echo '</td>';
                         echo '</tr>';
                     }
                     ?>
@@ -295,5 +295,19 @@ include('includes/nav.php');
     // Close User Details Modal
     $('#userDetailsClose').on('click', function() {
         $('#userDetailsModal').css('display', 'none');
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const userTable = document.getElementById('datatable');
+
+        userTable.addEventListener('click', function (event) {
+            const target = event.target.closest('.user-row');
+            if (target) {
+                // Extract user data from the data attribute
+                const userData = JSON.parse(target.getAttribute('data-user'));
+
+                // Open the user details modal
+                openUserDetailsModal(userData);
+            }
+        });
     });
 </script>
