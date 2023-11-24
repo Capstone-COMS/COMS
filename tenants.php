@@ -11,7 +11,7 @@
 
 <style>
     section {
-        max-width: 800px;
+        max-width: 815px;
         margin: 20px auto;
         background-color: #fff;
         padding: 20px;

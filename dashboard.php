@@ -59,106 +59,249 @@ include('includes/header.php');
 
 include('includes/nav.php');
 ?>
-<section style= "margin-top:90px;">
-   <?php
-   //    echo 'Hi, ' . $_SESSION['uname'] . ' (' . $_SESSION['utype'] . ')';
-   // echo $utype;
-?>
-   <div class="container-fluid">
-      <!-- ********************************************************************** -->
-      <!-- **** CTA BUTTON DISPLAY DEPENDING ON USER TYPE AND ACCOUNT STATUS **** -->
-      <!-- ********************************************************************** -->
-      <!-- OWNER -->
-      <?php if ($verificationStatus === 'approved' && $utype === 'Owner'): ?>
-      <h1>Dashboard</h1>
-      <div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Add your custom styles here */
+        body {
+         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
 
-1. total maps <br/>
-2. total spaces/map?
- -total free/vacant spaces?
-- total taken spaces?
-</div>
-<div>
-<h6>pie chart?</h6>
-3. total users <br/>
-4. total user reservation/application?
-</div>
-<div>
-<h6>pie chart?</h6>
-5. total user assigned?<br/>
-6. total bills? /montly reports?   
-</div>
-<div>
+        section {
+            flex: 1;
+            padding: 20px;
+            background-color: #f4f4f4;
+            margin: 10px;
+            border-radius: 5px;
+            height: 250px;
+        }
 
-7. adding cancel reservations<br/>
-8. montly revenue? based on rent bill? 
-</div>
-      <?php elseif ($verificationStatus === 'rejected' && $utype === 'Owner'): ?>
-        <h1>Dashboard</h1>
-      <div>
+        h2 {
+            color: #c19f90;
+        }
 
-1. total maps <br/>
-2. total spaces/map?
- -total free/vacant spaces?
-- total taken spaces?
-</div>
-<div>
-<h6>pie chart?</h6>
-3. total users <br/>
-4. total user reservation/application?
-</div>
-<div>
-<h6>pie chart?</h6>
-5. total user assigned?<br/>
-6. total bills? /montly reports?   
-</div>
-<div>
+        .section-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch; /* Adjusted to stretch items vertically */
+            height: 75%; /* Adjusted to make all section-content elements the same height */
+        }
 
-7. adding cancel reservations<br/>
-8. montly revenue? based on rent bill? 
-</div>
-      <div id="verificationModal" class="prompt-modal">
-         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Verify your account to add concourse.</p><!-- Will change this-->
-            <a href="verification_account.php" class="btn-sm btn btn-success">Verify Account</a>
-         </div>
-      </div>
-      <!-- TENANT -->
-      <?php elseif ($verificationStatus === 'approved' && $utype === 'Tenant'): ?>
-        <h1>Dashboard</h1>
-      <div>
+        .section-item,
+        .pie-chart {
+            flex: 1;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Adjusted to stack content vertically */
+        }
 
-1. total space? <br/>
-2. total bills??
-</div>
-<div>
-<h6></h6>
-3. Requirements? <br/>
+        .section-item p,
+        .pie-chart canvas {
+            flex: 1; /* Adjusted to take available space */
+            margin: 0;
+        }
 
-</div>
-<div>
+        #tenantPieChart,
+        #reservationPieChart,
+        #propertyOverviewPieChart {
+            max-width: 80px;
+            height: 80px; /* Set a fixed height for all pie charts */
+            display: block;
+            margin: 0 auto;
+        }
 
+        #feedbackSection {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1; /* Take full width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: 300px; /* Adjust the max-height as needed */
+            overflow-y: auto;
+        }
 
-      <!-- <a href="tenant-apply-space.php">
-      <button class="btn-sm btn btn-success">Apply For Space</button>
-      </a> -->
-      <?php else: ?>
-      <div id="verificationModal" class="prompt-modal">
-         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Verify your account to apply for space.</p> <!-- Will change this-->
-            <a href="verification_account.php" class="btn-sm btn btn-success">Verify Account</a>
-         </div>
-      </div>
-      <?php endif; ?>
-  
+        #feedbackList {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 400px; /* Adjust the max-width as needed */
+        }
 
+        #feedbackList li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            text-align: center;
+        }
 
-  
+        /* Adjusted pie chart sizes */
+        canvas {
+            width: 750px;
+            height: 750px;
+            display: block;
+            margin: 0 auto;
+        }
 
+        button {
+            padding: 10px;
+            background-color: #9b593c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #c19f90;
+            color: white;
+        }
+    </style>
+</head>
 
+<body style="margin-top: 80px;">
+    <section>
+        <h2>Property Overview</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h5>Total number of maps</h5>
+                <p>10</p>
+            </div>
+            <div class="section-item">
+                <h5>Total number of spaces</h5>
+                <p>100</p>
+            </div>
+            <div class="pie-chart">
+                <canvas id="propertyOverviewPieChart"></canvas>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <section>
+        <h2>Tenant Management</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h5>Total number of maps</h5>
+                <p>5</p>
+            </div>
+            <div class="pie-chart">
+                <canvas id="tenantPieChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Financial Overview</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h5>Monthly revenue</h5>
+                <p>$10,000</p>
+            </div>
+            <div class="section-item">
+                <button>Billing Information</button>
+            </div>
+            <div class="section-item">
+                <button>Financial Reports</button>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Reservation and Application Tracking</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h5>Pending reservations</h5>
+                <p>3</p>
+            </div>
+            <div class="section-item">
+                <h5>Pending applications</h5>
+                <p>2</p>
+            </div>
+            <div class="pie-chart">
+                <canvas id="reservationPieChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedbackSection">
+        <h2>Feedback</h2>
+        <ul id="feedbackList">
+            <li>Feedback 1</li>
+            <li>Feedback 2</li>
+            <li>Feedback 1</li>
+            <li>Feedback 2</li>
+            <li>Feedback 1</li>
+            <li>Feedback 2</li>
+            <li>Feedback 1</li>
+            <li>Feedback 2</li>
+            <!-- Add more feedback items -->
+        </ul>
+    </section>
+
+    <script>
+        // Mock data for feedback
+        const feedbackData = [
+            { user: 'Tenant 1', feedback: 'Positive feedback.' },
+            { user: 'Tenant 2', feedback: 'Negative feedback.' },
+        ];
+
+        // Dynamically populate feedback list
+        const feedbackList = document.getElementById('feedbackList');
+        feedbackData.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.feedback} from ${item.user}`;
+            feedbackList.appendChild(li);
+        });
+
+        // Mock data for pie charts
+        const tenantPieData = {
+            labels: ['Pending Users', 'Active Users'],
+            datasets: [{
+                data: [30, 70],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }],
+        };
+
+        const reservationPieData = {
+            labels: ['Reservations', 'Applications'],
+            datasets: [{
+                data: [40, 60],
+                backgroundColor: ['#FFCE56', '#4CAF50'],
+            }],
+        };
+
+        const propertyOverviewPieData = {
+            labels: ['Occupied', 'Vacant'],
+            datasets: [{
+                data: [80, 20],
+                backgroundColor: ['#FFCE56', '#4CAF50'],
+            }],
+        };
+
+        // Render pie charts
+        const tenantPieChart = new Chart(document.getElementById('tenantPieChart'), {
+            type: 'pie',
+            data: tenantPieData,
+        });
+
+        const reservationPieChart = new Chart(document.getElementById('reservationPieChart'), {
+            type: 'pie',
+            data: reservationPieData,
+        });
+
+        const propertyOverviewPieChart = new Chart(document.getElementById('propertyOverviewPieChart'), {
+            type: 'pie',
+            data: propertyOverviewPieData,
+        });
+    </script>
 
 <?php include('includes/footer.php'); ?>

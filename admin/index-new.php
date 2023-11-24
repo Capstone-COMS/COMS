@@ -273,6 +273,16 @@ form .user-details .input-box{
 
           <!-- <div class="text-center">
 
+    
+        
+          
+    
+
+        
+        Expand All
+    
+    @@ -129,11 +264,7 @@ class="btn-cta align-center"
+  
               <h6 class=" mt-5">Dont have an account?</h6>      
               <button
               class="btn-cta align-center"

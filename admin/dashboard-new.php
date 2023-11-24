@@ -1,69 +1,16 @@
-<!-- ******************** -->
-<!-- ***START SESSION**** -->
-<!-- ******************** -->
-<?php
-   session_name("user_session");
-session_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-require('includes/dbconnection.php');
-?>
-<!-- ******************** -->
-<!-- ***** PHP CODE ***** -->
-<!-- ******************** -->
-<?php
-// Check if the user is logged in
-if (!isset($_SESSION['uid'])) {
-    header('Location: login.php');
-    exit();
-}
+<!DOCTYPE html>
+<html lang="en">
 
-$uid = $_SESSION['uid'];
-$utype = $_SESSION['utype'];
-
-// $mappp = $_SESSION['approved_concourse'];
-
-// Check if there are approved concourse details in the session
-
-// **********************
-// ***USER VERIFY********
-// **********************
-// Check the status in the user_verification table
-$verificationStatus = "Not approved"; // Default status
-$verificationQuery = "SELECT status, first_name, last_name, address, gender, birthday FROM user_verification WHERE user_id = $uid";
-$verificationResult = mysqli_query($con, $verificationQuery);
-
-if ($verificationResult && mysqli_num_rows($verificationResult) > 0) {
-    $verificationData = mysqli_fetch_assoc($verificationResult);
-    $verificationStatus = $verificationData['status'];
-}
-
-
-// **********************
-// ***MAP VERIFY*********
-// **********************
-
-// **************************************
-
-$uploadDirectory = __DIR__ . '/uploads/';
-
-$approvedMapQuery = "SELECT * FROM concourse_verification WHERE status = 'approved'";
-$approvedMapResult = mysqli_query($con, $approvedMapQuery);
-
-?>
-<!-- ******************** -->
-<!-- **** START HTML **** -->
-<!-- ******************** -->
-<?php
-include('includes/header.php');
-
-include('includes/nav.php');
-?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Admin Dashboard</title>
+    <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Add your custom styles here */
         body {
-         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -78,6 +25,7 @@ include('includes/nav.php');
             margin: 10px;
             border-radius: 5px;
             height: 250px;
+            width: 600px;
         }
 
         h2 {
@@ -109,9 +57,11 @@ include('includes/nav.php');
             margin: 0;
         }
 
-        #tenantPieChart,
-        #reservationPieChart,
-        #propertyOverviewPieChart {
+        #userManagementPieChart,
+        #mapManagementPieChart,
+        #verifiedUsersPieChart,
+        #concessionManagementPieChart,
+        #systemLogsPieChart {
             max-width: 80px;
             height: 80px; /* Set a fixed height for all pie charts */
             display: block;
@@ -161,6 +111,7 @@ include('includes/nav.php');
             cursor: pointer;
             margin-left: 10px;
         }
+
         button:hover {
             background-color: #c19f90;
             color: white;
@@ -170,64 +121,89 @@ include('includes/nav.php');
 
 <body style="margin-top: 80px;">
     <section>
-        <h2>Property Overview</h2>
+        <h2>User Management</h2>
         <div class="section-content">
             <div class="section-item">
-                <h5>Total number of maps</h5>
-                <p>10</p>
+                <h5>Owners</h5>
+                <p>100</p>
             </div>
             <div class="section-item">
-                <h5>Total number of spaces</h5>
+                <h5>Tenants</h5>
+                <p>100</p>
+            </div>
+            <div class="section-item">
+                <h5>Account</h5>
                 <p>100</p>
             </div>
             <div class="pie-chart">
-                <canvas id="propertyOverviewPieChart"></canvas>
+                <canvas id="userManagementPieChart"></canvas>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Tenant Management</h2>
+        <h2>Map Management</h2>
         <div class="section-content">
             <div class="section-item">
-                <h5>Total number of maps</h5>
-                <p>5</p>
+                <h5>Total Map Applications</h5>
+                <p>20</p>
+            </div>
+            <div class="section-item">
+                <h5>Total Verified Maps</h5>
+                <p>80</p>
             </div>
             <div class="pie-chart">
-                <canvas id="tenantPieChart"></canvas>
+                <canvas id="mapManagementPieChart"></canvas>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Financial Overview</h2>
+        <h2>Verified Users</h2>
         <div class="section-content">
             <div class="section-item">
-                <h5>Monthly revenue</h5>
-                <p>$10,000</p>
-            </div>
-            <div class="section-item">
-                <button>Billing Information</button>
-            </div>
-            <div class="section-item">
-                <button>Financial Reports</button>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Reservation and Application Tracking</h2>
-        <div class="section-content">
-            <div class="section-item">
-                <h5>Pending reservations</h5>
-                <p>3</p>
-            </div>
-            <div class="section-item">
-                <h5>Pending applications</h5>
-                <p>2</p>
+                <h5>Total Users</h5>
+                <p>150</p>
             </div>
             <div class="pie-chart">
-                <canvas id="reservationPieChart"></canvas>
+                <canvas id="verifiedUsersPieChart"></canvas>
+            </div>
+            <div class="section-item">
+                <button>Approve User</button>
+                <button>Deny User</button>
+                <button>Deactivate User</button>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Concession Management</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h5>Total Concessions</h5>
+                <p>50</p>
+            </div>
+            <div class="pie-chart">
+                <canvas id="concessionManagementPieChart"></canvas>
+            </div>
+            <div class="section-item">
+                <button>Add Concession</button>
+                <button>Edit Concession</button>
+                <button>Deactivate Concession</button>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>System Logs</h2>
+        <div class="section-content">
+            <div class="section-item">
+                <h5>System Activities</h5>
+                <p>Detailed logs go here</p>
+            </div>
+            <div class="section-item">
+                <h5>Login/Logout History</h5>
+                <p>Logs go here</p>
             </div>
         </div>
     </section>
@@ -248,60 +224,72 @@ include('includes/nav.php');
     </section>
 
     <script>
-        // Mock data for feedback
-        const feedbackData = [
-            { user: 'Tenant 1', feedback: 'Positive feedback.' },
-            { user: 'Tenant 2', feedback: 'Negative feedback.' },
-        ];
-
-        // Dynamically populate feedback list
-        const feedbackList = document.getElementById('feedbackList');
-        feedbackData.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `${item.feedback} from ${item.user}`;
-            feedbackList.appendChild(li);
-        });
-
         // Mock data for pie charts
-        const tenantPieData = {
-            labels: ['Pending Users', 'Active Users'],
+        const userManagementPieData = {
+            labels: ['Owners', 'Tenants', 'Accountant'],
+            datasets: [{
+                data: [30, 50, 20],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+            }],
+        };
+
+        const mapManagementPieData = {
+            labels: ['Applications', 'Verified Maps'],
             datasets: [{
                 data: [30, 70],
                 backgroundColor: ['#FF6384', '#36A2EB'],
             }],
         };
 
-        const reservationPieData = {
-            labels: ['Reservations', 'Applications'],
-            datasets: [{
-                data: [40, 60],
-                backgroundColor: ['#FFCE56', '#4CAF50'],
-            }],
-        };
-
-        const propertyOverviewPieData = {
-            labels: ['Occupied', 'Vacant'],
+        const verifiedUsersPieData = {
+            labels: ['Verified', 'Not Verified'],
             datasets: [{
                 data: [80, 20],
                 backgroundColor: ['#FFCE56', '#4CAF50'],
             }],
         };
 
+        const concessionManagementPieData = {
+            labels: ['Active', 'Pending', 'Inactive'],
+            datasets: [{
+                data: [40, 20, 40],
+                backgroundColor: ['#FFCE56', '#36A2EB', '#4CAF50'],
+            }],
+        };
+
+        const systemLogsPieData = {
+            labels: ['Label 1', 'Label 2'],
+            datasets: [{
+                data: [60, 40],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+            }],
+        };
+
         // Render pie charts
-        const tenantPieChart = new Chart(document.getElementById('tenantPieChart'), {
+        const userManagementPieChart = new Chart(document.getElementById('userManagementPieChart'), {
             type: 'pie',
-            data: tenantPieData,
+            data: userManagementPieData,
         });
 
-        const reservationPieChart = new Chart(document.getElementById('reservationPieChart'), {
+        const mapManagementPieChart = new Chart(document.getElementById('mapManagementPieChart'), {
             type: 'pie',
-            data: reservationPieData,
+            data: mapManagementPieData,
         });
 
-        const propertyOverviewPieChart = new Chart(document.getElementById('propertyOverviewPieChart'), {
+        const verifiedUsersPieChart = new Chart(document.getElementById('verifiedUsersPieChart'), {
             type: 'pie',
-            data: propertyOverviewPieData,
+            data: verifiedUsersPieData,
+        });
+
+        const concessionManagementPieChart = new Chart(document.getElementById('concessionManagementPieChart'), {
+            type: 'pie',
+            data: concessionManagementPieData,
+        });
+
+        const systemLogsPieChart = new Chart(document.getElementById('systemLogsPieChart'), {
+            type: 'pie',
+            data: systemLogsPieData,
         });
     </script>
-
-<?php include('includes/footer.php'); ?>
+</body>
+</html>
