@@ -186,8 +186,11 @@ include('includes/nav.php');
     <div id="modal-container">
         <span id="close-modal">&times;</span>
             <form id="space-form" class='form d-none' action="" method="post">
-    <input type="hidden" name="concourse_id" value="<?php echo $concourse_id; ?>">
+    <!-- <input type="hidden" name="concourse_id" value="<?php echo $concourse_id; ?>"> -->
     <!-- <input type="hidden" name="concourse_id" value="<?php echo $_GET['concourse_id']; ?>"> -->
+
+    <input type="hidden" name="concourse_id" value="<?php echo isset($concourse_id) ? $concourse_id : ''; ?>">
+
 
     <h3>Space Details</h3>
     <label for="space_name">Space Name:</label>
@@ -215,27 +218,37 @@ include('includes/nav.php');
 </div>
 <?php
 // Add debugging statements
-echo "concourse_id from form: " . $_POST['concourse_id'] . "<br>";
+// echo "concourse_id from form: " . $_POST['concourse_id'] . "<br>";
+echo "concourse id: ($concourse_id)";
 ?>
 </section>
 <?php
-$sql = "SELECT * FROM `space` order by space_id asc";
-$qry = $con->query($sql);
-$tbl = array();
-while($row = $qry->fetch_assoc()):
-    $tbl[$row['space_id']] = array(
-    "id" => $row['space_id'],
-    "tbl_no" => $row['space_id'],
-    "name" => $row['space_name']
-    );
-    ?>
-<tr>
-    <td class="text-center p-0"><?php echo $tbl[$row['space_id']]['tbl_no'] ?></td>
-    <td class="py-0 px-1"><?php echo $tbl[$row['space_id']]['name'] ?></td>
-    <!-- ... -->
-</tr>
+$concourse_id = isset($_GET['concourse_id']) ? $_GET['concourse_id'] : null;
 
-<?php endwhile; ?>
+if ($concourse_id) {
+    $sql = "SELECT * FROM `space` WHERE concourse_id = $concourse_id ORDER BY space_id ASC";
+    $qry = $con->query($sql);
+    $tbl = array();
+
+    while ($row = $qry->fetch_assoc()) {
+        $tbl[$row['space_id']] = array(
+            "id" => $row['space_id'],
+            "tbl_no" => $row['space_id'],
+            "name" => $row['space_name']
+        );
+        ?>
+        <tr>
+            <td class="text-center p-0"><?php echo $tbl[$row['space_id']]['tbl_no'] ?></td>
+            <!-- <td class="py-0 px-1"><?php echo $tbl[$row['space_id']]['name'] ?></td> -->
+            <!-- ... -->
+        </tr>
+    <?php
+    }
+} else {
+    echo 'Concourse ID not provided.';
+}
+
+?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
