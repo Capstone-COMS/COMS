@@ -48,39 +48,7 @@ include('includes/header.php');
 include('includes/nav.php');
 ?>
 <style>
-    /* #fp-canvas-container{
-    height:50vh;
-    width:calc(100%);
-    position:relative;
-    }
-    .fp-img,.fp-canvas,.fp-canvas-2{
-    position:absolute;
-    width:calc(100%);
-    height:calc(100%);
-    top:0;
-    left:0;
-    z-index: 1;
-    }
-    #fp-map{
-    position:absolute;
-    width:calc(100%);
-    height:calc(100%);
-    top:0;
-    left:0;
-    z-index: 1;
-    }
-    .fp-canvas {
-    z-index: 2;
-    background: #0000000d;
-    cursor: crosshair;
-    }
-    #fp-map{
-    z-index: 1;
-    }
-    area:hover {
-    background: #0000004d;
-    color: #fff !important;
-    } */
+  
     #overlay {
     display: none;
     position: fixed;
@@ -103,11 +71,6 @@ include('includes/nav.php');
     width: 100%;
 }
 
-#space-form {
-    /* Add your existing form styles here */
-}
-
-/* Add a close button for the modal */
 #close-modal {
     position: absolute;
     top: 10px;
@@ -168,18 +131,24 @@ include('includes/nav.php');
             </div> -->
         </div>
         <!-- <div class="row"> -->
+
+
             <div id="fp-canvas-container" class="col-md-6">
-            <?php
+    <?php
+    // ... (previous code)      <?php
             if ($concourseResult && mysqli_num_rows($concourseResult) > 0) {
                 $concourseData = mysqli_fetch_assoc($concourseResult);
                 echo '<img src="/COMS    /uploads/' . $concourseData['concourse_map'] . '" alt="Concourse Map" class="fp-img" id="fp-img" usemap="#fp-map">';
             } else {
                 echo 'Concourse not found.';
             }
+
+    echo '<img src="/COMS/uploads/' . $concourseData['concourse_map'] . '" alt="Concourse Map" class="fp-img" id="fp-img" usemap="#fp-map">';
+echo '<map name="fp-map" id="fp-map" class=""></map>';
+echo '<canvas class="fp-canvas d-none" id="fp-canvas"></canvas>';
 ?>
-            <map name="fp-map" id="fp-map" class=""></map>
-            <canvas class="fp-canvas d-none" id="fp-canvas"></canvas>
-            </div>
+</div>
+
             <div class="col-md-4 space-sidebar-form">
             <h3><?php echo isset($concourseData['concourse_name']) ? $concourseData['concourse_name'] : "Concourse"; ?></h3>
             <div id="overlay">
@@ -265,6 +234,11 @@ var nposX = 0,
     nposY = 0;
 var ctx;
 var isDraw = false;
+var tbl = $.parseJSON('<?php echo json_encode($tbl) ?>')
+
+
+var drawnRectangles = [];
+
 function map_tbls(){
         if(Object.keys(tbl).length > 0){
             $('#fp-map').html('')
@@ -306,16 +280,30 @@ function map_tbls(){
 
 $(function () {
 
+    
+
     $('#create_table').click(function () {
         // Show the overlay and modal container
         $('#overlay').show();
         $('#modal-container').removeClass('d-none');
+        $('#draw').hide('slow');
+        $(this).addClass('d-none');
+        $('#cancel').removeClass('d-none');
+        $('#fp-canvas').addClass('d-none');
+        $('#space-form').removeClass('d-none');
     });
 
     $('#cancel').click(function () {
         // Hide the overlay and modal container
         $('#overlay').hide();
         $('#modal-container').addClass('d-none');
+           // Hide the form and display the "Create Space" button again
+           $(this).addClass('d-none');
+        $('#create_table').removeClass('d-none');
+        $('#fp-canvas').removeClass('d-none');
+        $('#draw').show('slow');
+        $('#space-form').addClass('d-none');
+        ctx.clearRect(0, 0, $('.fp-canvas')[0].width, $('.fp-canvas')[0].height);
         // ... Your existing code ...
     });
 
@@ -326,23 +314,8 @@ $(function () {
         // ... Your existing code ...
     });
 
-    $('#create_table').click(function () {
-        // Hide unnecessary elements and display the form
-        $('#draw').hide('slow');
-        $(this).addClass('d-none');
-        $('#cancel').removeClass('d-none');
-        $('#fp-canvas').addClass('d-none');
-        $('#space-form').removeClass('d-none');
-    });
-    $('#cancel').click(function () {
-        // Hide the form and display the "Create Space" button again
-        $(this).addClass('d-none');
-        $('#create_table').removeClass('d-none');
-        $('#fp-canvas').removeClass('d-none');
-        $('#draw').show('slow');
-        $('#space-form').addClass('d-none');
-        ctx.clearRect(0, 0, $('.fp-canvas')[0].width, $('.fp-canvas')[0].height);
-    });
+
+  
     cposX = $('#fp-canvas')[0].getBoundingClientRect().x;
     cposY = $('#fp-canvas')[0].getBoundingClientRect().y;
     ctx = $('#fp-canvas')[0].getContext('2d');
@@ -396,14 +369,68 @@ $('.fp-canvas').on('mouseup', function (e) {
     var height = nposY - posY;
     var width = nposX - posX;
 
+    // ctx.clearRect(0, 0, $('.fp-canvas')[0].width, $('.fp-canvas')[0].height);
+    // ctx.beginPath();
+    // ctx.lineWidth = "1";
+    // ctx.strokeStyle = "red";
+    // ctx.rect(posX, posY, width, height);
+    // ctx.stroke();
+    // isDraw = false;
+        // Store the coordinates in the drawnRectangles array
+
+    drawnRectangles.push({
+        x: posX,
+        y: posY,
+        width: width,
+        height: height
+    });
+
+    // Clear the canvas
     ctx.clearRect(0, 0, $('.fp-canvas')[0].width, $('.fp-canvas')[0].height);
-    ctx.beginPath();
-    ctx.lineWidth = "1";
-    ctx.strokeStyle = "red";
-    ctx.rect(posX, posY, width, height);
-    ctx.stroke();
+
+    // Draw all previously drawn rectangles
+    for (var i = 0; i < drawnRectangles.length; i++) {
+        var rect = drawnRectangles[i];
+        ctx.beginPath();
+        ctx.lineWidth = "1";
+        ctx.strokeStyle = "red";
+        ctx.rect(rect.x, rect.y, rect.width, rect.height);
+        ctx.stroke();
+    }
+
     isDraw = false;
 });
+
+function updateMap() {
+    $('#fp-map').html('');
+
+    for (var i = 0; i < drawnRectangles.length; i++) {
+        var rect = drawnRectangles[i];
+        var area = $("<area shape='rect'>")
+            .attr('href', "javascript:void(0)")
+            .attr('coords', rect.x + ", " + rect.y + ", " + (rect.x + rect.width) + ", " + (rect.y + rect.height))
+            .text("#" + (i + 1))
+            .addClass('fw-bolder text-muted')
+            .css({
+                'position': 'absolute',
+                'height': rect.height + 'px',
+                'width': rect.width + 'px',
+                'top': rect.y + 'px',
+                'left': rect.x + 'px',
+                'display': 'flex',
+                'text-align': 'center',
+                'justify-content': 'center',
+                'align-items': 'center',
+            });
+
+        $('#fp-map').append(area);
+
+        area.click(function () {
+            console.log("click");
+            // Add your logic for handling the click on the drawn area
+        });
+    }
+}
 
 $('#create_table').click(function () {
 
@@ -414,10 +441,11 @@ $('#create_table').click(function () {
     $('#cancel').removeClass('d-none');
     $('#fp-canvas').addClass('d-none');
 });
-    //    uni_modal("Map Table", "manage_table.php?x=" + px1_perc + "&y=" + py1_perc + "&w=" + px2_perc + "&h=" + py2_perc)
 console.log("clicked create table") 
+updateMap();
+
+    //    uni_modal("Map Table", "manage_table.php?x=" + px1_perc + "&y=" + py1_perc + "&w=" + px2_perc + "&h=" + py2_perc)
 });
-    // Add other event listeners and logic as needed
 });
 </script>
 <?php include('includes/footer.php'); ?>
