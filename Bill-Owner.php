@@ -40,6 +40,14 @@
         color: white;
     }
 
+    button:hover{
+      background-color: #c19f90 !important;
+   }
+
+   button{
+      background-color: #9b593c;
+   }
+
     .leases-table {
         width: 100%;
         border-collapse: collapse;
@@ -109,6 +117,37 @@
         color: black;
         text-decoration: none;
     }
+    #paymentButton {
+            background-color: #9b593c;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        #paymentModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #paymentModal .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
 </style>
 </head>
 <body style="margin-top: 150px;">
@@ -116,7 +155,10 @@
         <h2>Overview</h2>
         <div>
             <p>Total Revenue Generated: $5000</p>
+            <button id="paymentButton" onclick="openPaymentModal()">Payment</button>
         </div>
+
+        
         <h2>Billing Information</h2>
         <table id="billingTable">
             <thead>
@@ -135,6 +177,17 @@
             </tbody>
         </table>
     </section>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h3>Upload Payment Link</h3>
+            <!-- Add your form or input elements for uploading the link or QR code -->
+            <input type="text" placeholder="Paste payment link here">
+            <button onclick="submitPayment()">Submit</button>
+        </div>
+    </div>
+
     <div id="chargeBreakdownModal" class="modal">
         <div class="modal-content">
         <span class="close-modal" id="tenantClose">&times;</span>
@@ -153,6 +206,22 @@
         </div>
     </div>
     <script>
+        function openPaymentModal() {
+            const paymentModal = document.getElementById('paymentModal');
+            paymentModal.style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            const paymentModal = document.getElementById('paymentModal');
+            paymentModal.style.display = 'none';
+        }
+
+        function submitPayment() {
+            // Add logic to handle the submission of payment link or QR code
+            // You may use AJAX to send the data to the server
+            alert('Payment submitted!');
+            closePaymentModal();
+        }
     document.addEventListener('DOMContentLoaded', function () {
         const billingData = [
             { tenantName: 'Tenant 1', space: 'Space A', totalCharges: 1000, paymentsMade: 800, outstandingBalance: 200, dueDate: '2023-06-30', paymentStatus: 'Pending' },
