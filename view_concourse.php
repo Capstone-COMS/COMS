@@ -157,7 +157,7 @@ if (isset($_GET['concourse_id'])) {
         $concourseDetails = $result->fetch_assoc();
         ?>
         <div class="container" style="margin-top: 100px;">
-            <h1>Concourse Details</h1>
+            <h1 style="color: #c19f90;">Concourse Details</h1>
             <div class="card" style="width: 100%; height: 100%; padding: 10px; margin: 0 auto;">
                 <div class="image-container">
                     <?php
