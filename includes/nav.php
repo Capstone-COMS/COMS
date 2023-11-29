@@ -137,9 +137,6 @@
                 echo '<li class="nav-item">';
                 echo '<a href="index.php" class="nav-link">Home</a>';
                 echo '</li>';
-                 echo '<li class="nav-item">';
-                echo '<a href="dashboard_tenant2.php" class="nav-link">Dashboard</a>';
-                echo '</li>';
                 echo '<li class="nav-item">';
                 echo '<a href="concourses.php" class="nav-link">Concourses</a>';
                 echo '</li>';
@@ -151,10 +148,10 @@
                 echo '<a href="index.php" class="nav-link">Home</a>';
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo '<a href="acc_dashboard.php" class="nav-link">Dashboard</a>';
+                echo '<a href="acc_concourse.php" class="nav-link">Concourses</a>';
                 echo '</li>';
                 echo '<li class="nav-item">';
-                echo '<a href="acc_concourse.php" class="nav-link">Concourses</a>';
+                echo '<a href="acc_concourse.php" class="nav-link">Payments</a>';
                 echo '</li>';
             }            
         ?>
