@@ -35,7 +35,7 @@
     <!--begin::Main-->
     <div class="d-flex flex-column flex-root">
         <!--begin::Login-->
-        <div class="login login-1 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white"
+        <div class="login login-1 login-signup-on d-flex flex-column flex-lg-row flex-column-fluid bg-white"
             id="kt_login">
             <!--begin::Aside-->
             <div class="login-aside d-flex flex-row-auto bgi-size-cover bgi-no-repeat p-10 p-lg-10"
@@ -61,7 +61,7 @@
                     <!--end: Aside content-->
                     <!--begin: Aside footer for desktop-->
                     <div class="d-none flex-column-auto d-lg-flex justify-content-between mt-10">
-                        <div class="opacity-70 font-weight-bold text-white">© 2024 COMS</div>
+                        <div class="opacity-70 font-weight-bold text-white">© 2020 DU-Developers</div>
                         <div class="d-flex">
                             <a href="#" class="text-white ml-10">Contact</a>
                         </div>
@@ -110,8 +110,8 @@
                     <!--begin::Signup-->
                     <div class="login-form login-signup">
                         <div class="text-center mb-10 mb-lg-20">
-                            <h3 class="font-size-h1">Sign Up</h3>
-                            <p class="text-muted font-weight-bold">Enter your details to create your account</p>
+                            <h3 class="font-size-h1">Create account</h3>
+                            <p class="text-muted font-weight-bold">Enter details to create new owner account</p>
                         </div>
                         <!--begin::Form-->
                         <form class="form" novalidate="novalidate" id="kt_login_signup_form">
@@ -144,11 +144,11 @@
                                     placeholder="Birthday" name="birthday" id="birthday" autocomplete="off" />
                                 <input type="hidden" name="validate_birthdate"  id="validate_birthdate">
                             </div>
-                            <div class="form-group d-none">
-                                <div class="d-flex flex-row ">
-                                    <span class="use-title font-weight-bold ">User Type: </span>
-                                    <input type="radio" value="Tenant" name="usertype" id="dot-2" class="mb-2 ml-2 " checked required>    
-                                    <label for="dot-2"><span class="use mb-0 p-2"> Tenant </span><span></span></label>          
+                            <div class="form-group">
+                                <div class="d-flex flex-row">
+                                    <span class="use-title font-weight-bold">User Type: </span>
+                                    <input type="radio" value="Owner" name="usertype" id="dot-1" class="ml-2 mb-2" checked required>
+                                    <label for="dot-1"><span class="use mb-0 p-2"> Owner </span><span></span></label>     
                                 </div>       
                             </div>
                             <div class="form-group">
@@ -222,7 +222,7 @@
     <script src="/new-coms/content/plugins/custom/prismjs/prismjs.bundle.js"></script>
     <script src="/new-coms/content/js/scripts.bundle.js"></script>
     <!-- <script src="/new-coms/content/js/pages/custom/login/login-general.js"></script> -->
-    <script src="/new-coms/controller/javascript/login.js"></script>
+    <script src="/new-coms/controller/javascript/create-owner.js"></script>
 </body>
 <!--end::Body-->
 
